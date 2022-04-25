@@ -27,12 +27,12 @@ export default function SignIn(){
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 20}}>
           <Text>Forgot Password?</Text>
-          <Text style={{marginLeft: 10, color: '#4355F9'}}>Click here</Text>
+          <Text style={{marginLeft: 5, color: '#E5B300'}}>Click here</Text>
         </View>
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 270}}>
           <Text>Don't have an account?</Text>
-          <Text style={{marginLeft: 10, color: '#4355F9'}}>Sign Up</Text>
+          <Text style={{marginLeft: 5, color: '#E5B300'}}>Sign Up</Text>
         </View>
       </View>
     </React.Fragment>
@@ -49,12 +49,12 @@ const styles = StyleSheet.create({
     marginTop: 100,
     fontSize: 35,
     fontWeight: 'bold',
-    color: '#4355F9'
+    color: '#E5B300'
   },
 
   textLogin: {
     textAlign: 'center',
-    color: '#514C4C',
+    color: '#E5B300',
     fontSize: 16,
     fontWeight: '700',
     marginTop: 70
@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginRight: 40,
     borderRadius: 5,
-    backgroundColor: '#4355F9',
+    backgroundColor: '#E5B300',
   }
 });

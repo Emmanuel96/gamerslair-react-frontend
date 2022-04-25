@@ -7,10 +7,10 @@ import SignUp from './pages/signup/signup';
 export default function App() {
   return (
     <React.Fragment>
-      <Landing />
+      {/* <Landing /> */}
       {/* <SignIn /> */}
       {/* <ResetPassword /> */}
-      {/* <SignUp /> */}
+      <SignUp />
     </React.Fragment>
   );
 }

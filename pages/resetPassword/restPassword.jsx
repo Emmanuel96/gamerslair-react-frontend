@@ -27,7 +27,7 @@ export default function ResetPassword(){
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 260}}>
           <Text>I remember now!</Text>
-          <Text style={{marginLeft: 10, color: '#4355F9'}}>Go back!</Text>
+          <Text style={{marginLeft: 10, color: '#E5B300'}}>Go back!</Text>
         </View>
       </View>
     </React.Fragment>
@@ -44,15 +44,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     fontSize: 35,
     fontWeight: 'bold',
-    color: '#4355F9'
-  },
-
-  textLogin: {
-    textAlign: 'center',
-    color: '#514C4C',
-    fontSize: 16,
-    fontWeight: '700',
-    marginTop: 70
+    color: '#E5B300'
   },
   
   usernameInput: {
@@ -98,6 +90,6 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginRight: 40,
     borderRadius: 5,
-    backgroundColor: '#4355F9',
+    backgroundColor: '#E5B300',
   }
 });

@@ -13,16 +13,6 @@ export default function SignUp(){
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Username'}/>
         </View>
 
-        <View style={[styles.container, {flexDirection: 'row', justifyContent: 'space-between'}]}>
-          <View style={{width: 150}}>
-            <TextInput style={[styles.usernameInput, styles.shadowProp, {width: '100%'}]} placeholder={'Firstname'}/>
-          </View>
-
-          <View style={{width: 150}}>
-            <TextInput style={[styles.usernameInput, styles.shadowProp, {width: '100%'}]} placeholder={'Lastname'}/>
-          </View>
-        </View>
-
         <View style={styles.container}>
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Email Address'}/>
         </View>
@@ -31,27 +21,21 @@ export default function SignUp(){
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Password'}/>
         </View>
 
-        <View style={[styles.container, {flexDirection: 'row', justifyContent: 'space-between'}]}>
-          <View style={{width: 150}}>
-            <TextInput style={[styles.usernameInput, styles.shadowProp, {width: '100%'}]} placeholder={'Date of Birth'}/>
-          </View>
-
-          <View style={{width: 150}}>
-            <TextInput style={[styles.usernameInput, styles.shadowProp, {width: '100%'}]} placeholder={'Country'}/>
-          </View>
+        <View style={styles.container}>
+          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'COnfirm Password'}/>
         </View>
 
         <View style={{marginTop: 20}}>
           <TouchableOpacity style={styles.button}>
             <Text style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
-              Sign Up
+              CREATE ACCOUNT
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 100}}>
+        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 190}}>
           <Text>Already have an account?</Text>
-          <Text style={{marginLeft: 5, color: '#4355F9'}}>Sign In</Text>
+          <Text style={{marginLeft: 5, color: '#E5B300'}}>Sign In</Text>
         </View>
       </View>
     </React.Fragment>
@@ -68,12 +52,12 @@ const styles = StyleSheet.create({
     marginTop: 100,
     fontSize: 35,
     fontWeight: 'bold',
-    color: '#4355F9'
+    color: '#E5B300'
   },
 
   textSignUp: {
     textAlign: 'center',
-    color: '#514C4C',
+    color: '#E5B300',
     fontSize: 16,
     fontWeight: '700',
     marginTop: 50
@@ -110,6 +94,6 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginRight: 40,
     borderRadius: 5,
-    backgroundColor: '#4355F9',
+    backgroundColor: '#E5B300',
   }
 });

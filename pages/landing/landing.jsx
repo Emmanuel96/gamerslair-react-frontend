@@ -11,7 +11,7 @@ export default function Landing(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4355F9',
+    backgroundColor: '#E5B300',
     alignItems: 'center',
     justifyContent: 'center',
   },
