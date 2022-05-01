@@ -1,7 +1,16 @@
 import React from "react"
-import { StyleSheet, TouchableOpacity, Text, View, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { 
+  StyleSheet, 
+  TouchableOpacity, 
+  Text, 
+  View, 
+  TextInput 
+} from 'react-native';
 
 export default function ResetPassword(){
+  const navigation = useNavigation()
+
   return(
     <React.Fragment>
       <View style={styles.mainContainer}>
@@ -17,7 +26,7 @@ export default function ResetPassword(){
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Email Address'}/>
         </View>
 
-        <View style={{}}>
+        <View>
           <TouchableOpacity style={styles.button}>
             <Text style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
               Send
@@ -27,7 +36,12 @@ export default function ResetPassword(){
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 260}}>
           <Text>I remember now!</Text>
-          <Text style={{marginLeft: 10, color: '#E5B300'}}>Go back!</Text>
+          
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 5, color: '#E5B300'}}>
+            <Text style={{color: '#E5B300',}}>
+              Go back
+            </Text>
+          </TouchableOpacity>        
         </View>
       </View>
     </React.Fragment>

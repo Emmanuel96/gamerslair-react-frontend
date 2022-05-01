@@ -1,7 +1,16 @@
 import React from "react"
-import { StyleSheet, TouchableOpacity, Text, View, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { 
+  StyleSheet, 
+  TouchableOpacity, 
+  Text, 
+  View, 
+  TextInput 
+} from 'react-native';
 
 export default function SignUp(){
+  const navigation = useNavigation()
+
   return(
     <React.Fragment>
       <View style={styles.mainContainer}>
@@ -35,7 +44,14 @@ export default function SignUp(){
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 190}}>
           <Text>Already have an account?</Text>
-          <Text style={{marginLeft: 5, color: '#E5B300'}}>Sign In</Text>
+
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('signin', { name: 'signin' })}
+            style={{marginLeft: 5, color: '#E5B300'}}>
+            <Text style={{color: '#E5B300',}}>
+              Click here
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </React.Fragment>

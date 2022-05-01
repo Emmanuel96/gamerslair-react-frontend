@@ -1,13 +1,26 @@
 import React from "react"
-import { StyleSheet, TouchableOpacity, Text, View, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { 
+  StyleSheet, 
+  TouchableOpacity, 
+  Text, 
+  View, 
+  TextInput 
+} from 'react-native';
 
 export default function SignIn(){
+  const navigation = useNavigation()
+  
   return(
     <React.Fragment>
       <View style={styles.mainContainer}>
-        <Text style={styles.textLogo}>GamersLAIR</Text>
+        <Text style={styles.textLogo}>
+          GamersLAIR
+        </Text>
 
-        <Text style={styles.textLogin}>Login to your Account</Text>
+        <Text style={styles.textLogin}>
+          Login to your Account
+        </Text>
 
         <View style={styles.container}>
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Username or email'}/>
@@ -27,12 +40,26 @@ export default function SignIn(){
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 20}}>
           <Text>Forgot Password?</Text>
-          <Text style={{marginLeft: 5, color: '#E5B300'}}>Click here</Text>
+
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('reset-password', { name: 'reset-password' })} 
+            style={{marginLeft: 5, color: '#E5B300'}}>
+            <Text style={{color: '#E5B300',}}>
+              Click here
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 270}}>
           <Text>Don't have an account?</Text>
-          <Text style={{marginLeft: 5, color: '#E5B300'}}>Sign Up</Text>
+          
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('signup', { name: 'signup' })}
+            style={{marginLeft: 5, color: '#E5B300'}}>
+            <Text style={{color: '#E5B300',}}>
+              Click here
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </React.Fragment>
