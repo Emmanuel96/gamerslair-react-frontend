@@ -1,12 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+// import AppLoading from 'expo-app-loading';
+// import {
+//   useFonts,
+//   Rosario_700Black,
+// } from '@expo-google-fonts/rosario';
+
+
+import BottomNavBar from './components/BottomNavBar';
+import NewChallenges from './pages/NewChallenges';
+
 
 export default function App() {
+  // let [fontsLoaded] = useFonts({
+  //   Rosario_700Black,
+  // });
+
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <View styles={styles.body}>
+        <NewChallenges/>
+      </View>
+      <BottomNavBar/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -14,7 +35,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  body:{
   },
 });
