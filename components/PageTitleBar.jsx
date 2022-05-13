@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
    bar:{
        alignItems:'center',
        paddingVertical: '3%',
-       marginBottom: '5%',
+       marginBottom: '2%',
    }
 })

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         width: '85%',
         alignSelf:'center',
-        marginVertical: '5%',  
+        marginVertical: '7%',  
         paddingBottom: 15,
    },
    card_heading:{
