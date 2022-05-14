@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { StyleSheet, View, Image,} from 'react-native';
+import { StyleSheet, View, Image,TouchableOpacity} from 'react-native';
 
 import { baseStyles } from '../style';
 
@@ -7,24 +7,24 @@ export default function BottomNavBar(){
     return(
         <View style={[baseStyles.shadowProp, styles.bottomNavbar]}>
             <View style={[styles.navbar_inner]}>
-                <View style={[styles.navitem,  styles.active]}>
+                <TouchableOpacity style={[styles.navitem,  styles.active]}>
                     <Image
                         source={require('../asset/icons/home.png')}
                         style={[styles.navicon]}
                     />
-                </View>
-                <View style={[styles.navitem]}>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.navitem]}>
                     <Image
                         source={require('../asset/icons/plus.png')}
                         style={[styles.navicon]}
                     />
-                </View>
-                <View style={[styles.navitem]}>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.navitem]}>
                     <Image
                         source={require('../asset/icons/mail.png')}
                         style={[styles.navicon]}
                     />
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     )
