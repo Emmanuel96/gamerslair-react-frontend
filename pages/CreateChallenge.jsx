@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
 import {StyleSheet, SafeAreaView, View,} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
 
 import Header from '../components/Header'
 import PageTitleBar from '../components/PageTitleBar'
