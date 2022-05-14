@@ -21,7 +21,7 @@ export default function BottomNavBar(){
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.navitem]}>
                     <Image
-                        source={require('../asset/icons/mail.png')}
+                        source={require('../asset/icons/gamepad.png')}
                         style={[styles.navicon]}
                     />
                 </TouchableOpacity>
