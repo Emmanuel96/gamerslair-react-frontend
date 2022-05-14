@@ -5,7 +5,6 @@ import {StyleSheet} from 'react-native';
 import { baseStyles } from '../style';
 
 export default function Dropdown(props) {
-    const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
         {label: 'Apple', value: 'apple'},
@@ -17,13 +16,15 @@ export default function Dropdown(props) {
             placeholder={props.placeholder}
             zIndex={props.zIndex}   //The zIndex and zIndexInverse props are necessary to avoid dropdowns overlapping when they are more than one on a page.
             zIndexInverse={props.zIndexInverse}
-            open={open}
+            open={props.open}
+            onOpen={props.onOpen}
             value={value}
             items={items}
-            setOpen={setOpen}
+            setOpen={props.setOpen}
             setValue={setValue}
             setItems={setItems}
             style={[baseStyles.shadowProp, styles.dropDown, props.style]}
+            dropDownContainerStyle={[baseStyles.shadowProp, styles.dropDownContainerStyle]}
         />
     );
 }
@@ -31,5 +32,7 @@ export default function Dropdown(props) {
 const styles = StyleSheet.create({
     dropDown:{
         borderWidth: 0,
+    },
+    dropDownContainerStyle:{
     }
 })
