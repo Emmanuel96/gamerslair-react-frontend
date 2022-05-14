@@ -20,12 +20,9 @@ export default function Card(props){
                 />
                 <Text style={[baseStyles.h5]}>{props.user_name}</Text>
             </View>
-
-            <View style={styles.card_footer}>
-                <CustomButton
-                    title='VIEW DETAILS'
-                    color="#fff"
-                />
+            
+            <View style={styles.card_children}>
+                {props.children}
             </View>
         </View>
     )
@@ -65,7 +62,6 @@ const styles = StyleSheet.create({
    challenger_dp:{
        marginRight:'4%'
    },
-   card_footer:{
-        alignSelf:'center',
+   card_children:{
    }
 })
