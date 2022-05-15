@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
        backgroundColor:'rgba(229, 179, 0, 1)',
        borderRadius: 8,
        overflow: 'hidden',
-       paddingVertical:4,
-       paddingHorizontal:10,
+       paddingVertical:7,
+       paddingHorizontal:'8%',
        alignSelf:'flex-start',
    },
    price:{

@@ -8,7 +8,7 @@ import CustomButton from '../components/CustomButton';
 
 
 
-export default function NewChallenges() {
+export default function AcceptRejectChallenge() {
     return (
       <SafeAreaView>
         <Header price='30' dp={require('../asset/images/dp.png')}/>

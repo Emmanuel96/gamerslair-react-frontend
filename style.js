@@ -1,6 +1,10 @@
 import { StyleSheet} from 'react-native';
 
 export const baseStyles = StyleSheet.create({
+    h4:{
+        fontSize:25,
+        fontWeight:'bold',
+    },
     h5:{
         fontSize:20,
         fontWeight:'bold',

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 
 import { baseStyles } from '../style';
 
@@ -9,9 +9,10 @@ export default function CustomBotton(props){
             onPress={props.onPress}
             style={[{ 
                 backgroundColor:props.backgroundColor||'rgba(229, 179, 0, 1)'
-            },styles.button, props.styles]}
+            },styles.button, props.style]}
         >
-            <Text style={[baseStyles.h6, {color:props.color||'#000',}]}>{props.title}</Text>
+            <Image source={props.image} style={[{marginHorizontal:5, width:32,height:32,}]}/>
+            <Text style={[baseStyles.h6, {color:props.color||'#000',marginLeft:5,}]}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
@@ -22,8 +23,9 @@ const styles = StyleSheet.create({
         borderRadius:5,
         paddingHorizontal:13,
         paddingVertical:10,
+        flexDirection:'row',
         alignSelf:'flex-start',
         alignItems:'center',
-
+        justifyContent:'center',
     }
 })

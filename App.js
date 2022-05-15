@@ -4,13 +4,14 @@ import AppLoading from 'expo-app-loading';
 
 import BottomNavBar from './components/BottomNavBar';
 import NewChallenges from './pages/NewChallenges';
+import AcceptRejectChallenge from './pages/AcceptRejectChallenge';
 
 
 export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <NewChallenges/>
+      <AcceptRejectChallenge/>
       <BottomNavBar/>
       <StatusBar style="auto" />
     </SafeAreaView>

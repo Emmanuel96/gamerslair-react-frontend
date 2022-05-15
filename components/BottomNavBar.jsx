@@ -75,14 +75,14 @@ const styles = StyleSheet.create({
         paddingTop:4,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
-        width:100,
+        width:120,
         height:58,
         justifyContent:'center',
         alignItems:'center',
     },
     navicon:{
-        width:30,
-        height:30,
+        width:36,
+        height:36,
     },
     active:{
         backgroundColor:'rgba(229, 179, 0, 1)',
