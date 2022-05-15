@@ -6,13 +6,14 @@ import { baseStyles } from '../style';
 export default function PageTitleBar(props){
     return(
         <View style={[baseStyles.shadowProp, styles.bar]}>
-            <Text style={[baseStyles.bold]}>{props.title}</Text>
+            <Text style={[baseStyles.bold, baseStyles.textShadowProp]}>{props.title}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
    bar:{
+        backgroundColor:'#fff',
        alignItems:'center',
        paddingVertical: '3%',
        marginBottom: '2%',

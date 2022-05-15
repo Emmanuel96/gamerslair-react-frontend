@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         alignSelf:'flex-start',
         alignItems:'center',
+        shadowColor:'#171717',
+        shadowOffset:{width: 0, height: 0},
+        shadowOpacity:0.4,
+        shadowRadius:2,
+
+        elevation: 20,
 
     }
 })
