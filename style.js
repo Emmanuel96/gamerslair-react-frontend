@@ -1,6 +1,9 @@
 import { StyleSheet} from 'react-native';
 
 export const baseStyles = StyleSheet.create({
+    customColor:{
+        color:'rgba(71, 66, 66, 1)',
+    },
     h5:{
         color:'rgba(71, 66, 66, 1)',
         fontSize:20,
