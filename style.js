@@ -2,6 +2,7 @@ import { StyleSheet} from 'react-native';
 
 export const baseStyles = StyleSheet.create({
     h5:{
+        color:'rgba(71, 66, 66, 1)',
         fontSize:20,
         fontWeight:'bold',
     },
@@ -13,13 +14,17 @@ export const baseStyles = StyleSheet.create({
         fontWeight:'bold',
     },
     shadowProp:{
-        backgroundColor: '#fff',
         shadowColor:'#171717',
         shadowOffset:{width: 0, height: 5},
         shadowOpacity:0.4,
         shadowRadius:4,
 
         elevation: 20,
+    },
+    textShadowProp:{
+        textShadowColor:'rgba(0,0,0,0.3)',
+        textShadowOffset:{width:0, height:3},
+        textShadowRadius:4,
     },
     dp:{
         width:40,

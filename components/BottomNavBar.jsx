@@ -52,6 +52,7 @@ export default function BottomNavBar(){
 
 const styles = StyleSheet.create({
     bottomNavbar:{
+        backgroundColor:'#fff',
         position:'absolute',
         bottom:0,
         width:'100%',
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
         overflow:'hidden',
+        backgroundColor:'#fff',
 
     },
     navitem:{
