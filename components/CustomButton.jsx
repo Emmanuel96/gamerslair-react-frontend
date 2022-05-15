@@ -11,8 +11,10 @@ export default function CustomBotton(props){
                 backgroundColor:props.backgroundColor||'rgba(229, 179, 0, 1)'
             },styles.button, props.style]}
         >
-            <Image source={props.image} style={[{marginHorizontal:5, width:32,height:32,}]}/>
-            <Text style={[baseStyles.h6, {color:props.color||'#000',marginLeft:5,}]}>{props.title}</Text>
+            {props.image !== undefined &&
+                <Image source={props.image} style={[{marginHorizontal:10, width:32,height:32,}]}/>
+            }
+            <Text style={[baseStyles.h6, props.textStyle, {color:props.color||'#000',}]}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
