@@ -9,8 +9,8 @@ export default function Card(props){
     return(
         <View style={[baseStyles.shadowProp, styles.card]}>
             <View style={styles.card_heading}>
-                <Text style={[baseStyles.h5, styles.game_title]}>FIFA 22 - XBOX ONE</Text>
-                <Text style={[baseStyles.h5, styles.price]}>${props.price}</Text>
+                <Text style={[baseStyles.h5, baseStyles.textShadowProp, styles.game_title]}>FIFA 22 - XBOX ONE</Text>
+                <Text style={[baseStyles.h5,baseStyles.textShadowProp, styles.price]}>${props.price}</Text>
             </View>
 
             <View style={styles.card_body}>
@@ -18,7 +18,7 @@ export default function Card(props){
                     source={props.user_dp}
                     style={[baseStyles.dp, styles.challenger_dp]}
                 />
-                <Text style={[baseStyles.h5]}>{props.user_name}</Text>
+                <Text style={[baseStyles.h5, baseStyles.textShadowProp,]}>{props.user_name}</Text>
             </View>
             
             <View style={styles.card_children}>
@@ -30,11 +30,12 @@ export default function Card(props){
 
 const styles = StyleSheet.create({
    card:{
-        borderRadius: 8,
+        borderRadius: 2,
         width: '85%',
         alignSelf:'center',
         marginVertical: '7%',  
         paddingBottom: 15,
+        backgroundColor:'#fff',
    },
    card_heading:{
         display:'flex',
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
    },
    game_title:{
        backgroundColor:'rgba(229, 179, 0, 1)',
-       borderRadius: 8,
+       borderRadius: 7,
        overflow: 'hidden',
        paddingVertical:7,
        paddingHorizontal:'8%',
