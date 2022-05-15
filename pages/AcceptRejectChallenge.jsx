@@ -33,7 +33,7 @@ export default function AcceptRejectChallenge() {
     return(
       <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
         <View style={styles.details}>
-            <Text style={[baseStyles.h4]}>DETAILS:</Text>
+            <Text style={[baseStyles.h4, baseStyles.customColor]}>DETAILS:</Text>
             <Text style={[styles.detailsText]}>{props.details}</Text>
             
         </View>
@@ -62,7 +62,7 @@ export default function AcceptRejectChallenge() {
     details:{
       paddingHorizontal:'5%',
       marginTop:8,
-      marginBottom:40,
+      marginBottom:50,
     },
     detailsText:{
       fontSize:21,
@@ -72,6 +72,7 @@ export default function AcceptRejectChallenge() {
       alignSelf:'center',
       flexDirection:'row',
       alignItems:'center',
+      marginBottom:15,
     },
     buttons:{
       marginHorizontal:20,
