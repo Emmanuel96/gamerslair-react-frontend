@@ -41,12 +41,14 @@ export default function MatchResultVerification() {
             color="#fff"
             backgroundColor='rgba(105, 139, 78, 1)'
             style={styles.buttons}
+            textStyle={baseStyles.textShadowProp}
           />
           <CustomButton
             title="I LOST"
             color="#fff"
             backgroundColor='rgba(242, 36, 36, 1)'
             style={styles.buttons}
+            textStyle={baseStyles.textShadowProp}
           />
         </View>        
       </Card>

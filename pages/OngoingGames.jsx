@@ -42,6 +42,7 @@ export default function OngoingGames() {
             color="#fff"
             backgroundColor='rgba(105, 139, 78, 1)'
             style={styles.button}
+            textStyle={baseStyles.textShadowProp}
         />        
       </Card>
     )
