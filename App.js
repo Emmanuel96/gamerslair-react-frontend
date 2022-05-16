@@ -8,13 +8,14 @@ import AcceptRejectChallenge from './pages/AcceptRejectChallenge';
 import OngoingGames from './pages/OngoingGames';
 import MatchResultVerification from './pages/MatchResultVerification';
 import MatchResultVerification2 from './pages/MatchResultVerification2';
+import MatchVerificationAfter from './pages/MatchVerificationAfter';
 
 
 export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <MatchResultVerification2/>
+      <MatchVerificationAfter/>
       <BottomNavBar/>
       <StatusBar style="auto" />
     </SafeAreaView>
