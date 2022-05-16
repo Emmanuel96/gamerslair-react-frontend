@@ -20,8 +20,6 @@ export default function MatchResultVerification() {
           contentContainerStyle={styles.contentContainer}
         >
             <MatchResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
-            <MatchResultVerificationCard price='20' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='1 v 1: Best out of 5'/>
-            <MatchResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
         {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
