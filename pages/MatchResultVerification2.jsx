@@ -10,7 +10,7 @@ import CustomButton from '../components/CustomButton';
 
 
 
-export default function MathResultVerification() {
+export default function MatchResultVerification2() {
     return (
       <SafeAreaView>
         <Header price='30' dp={require('../asset/images/dp.png')}/>
@@ -19,9 +19,7 @@ export default function MathResultVerification() {
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <MathResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
-            <MathResultVerificationCard price='20' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='1 v 1: Best out of 5'/>
-            <MathResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+            <MatchResultVerification2Card price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
         {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
@@ -29,28 +27,24 @@ export default function MathResultVerification() {
   }
 
 
-  function MathResultVerificationCard(props){
+  function MatchResultVerification2Card(props){
     return(
       <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
         <View style={styles.details}>
-            <Text style={[baseStyles.h4, baseStyles.customColor]}>DETAILS:</Text>
-            <Text style={[styles.detailsText]}>{props.details}</Text>
-            
+            <Text style={[baseStyles.bold, styles.detailsText]}>Lewandoski says he won the game</Text>  
         </View>
         <View style={styles.buttonGroup}>
           <CustomButton
-            title="I WON"
-            color="#fff"
+            image={require('../asset/icons/check.png')}
             backgroundColor='rgba(105, 139, 78, 1)'
             style={styles.buttons}
           />
           <CustomButton
-            title="I LOST"
-            color="#fff"
+            image={require('../asset/icons/close.png')}
             backgroundColor='rgba(242, 36, 36, 1)'
             style={styles.buttons}
           />
-        </View>        
+        </View>       
       </Card>
     )
   }
@@ -66,7 +60,7 @@ export default function MathResultVerification() {
       marginBottom:35,
     },
     detailsText:{
-      fontSize:21,
+      fontSize:17,
       marginTop:10,
     },
     buttonGroup:{
@@ -76,8 +70,6 @@ export default function MathResultVerification() {
         marginBottom:15,
     },
     buttons:{
-        marginHorizontal:15,
-        paddingHorizontal:20,
-        paddingVertical:13,
+        marginHorizontal:20,
     }
   })
