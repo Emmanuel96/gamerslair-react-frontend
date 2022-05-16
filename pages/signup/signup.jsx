@@ -1,5 +1,6 @@
-import React from "react"
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react"
+import { useNavigation } from '@react-navigation/native'
+import auth from "../../services/auth"
 import { 
   StyleSheet, 
   TouchableOpacity, 
@@ -10,6 +11,22 @@ import {
 
 export default function SignUp(){
   const navigation = useNavigation()
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const handleSignup = () => {
+    const data = {
+      username: username,
+      email: email,
+      password: password
+    }
+    console.log(data)
+    auth.signup(data).then(res => {
+      console.log(res)
+    }).catch(error => console.log("Failed ", error))
+  }
 
   return(
     <React.Fragment>
@@ -19,24 +36,42 @@ export default function SignUp(){
         <Text style={styles.textSignUp}>Create Account</Text>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Username'}/>
+          <TextInput 
+            style={[styles.usernameInput, styles.shadowProp]} 
+            placeholder={'Username'}
+            onChangeText={(val) => setUsername(val)}
+          />
         </View>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Email Address'}/>
+          <TextInput 
+            style={[styles.usernameInput, styles.shadowProp]} 
+            placeholder={'Email Address'}
+            onChangeText={(val) => setEmail(val)}
+          />
         </View>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Password'}/>
+          <TextInput 
+            style={[styles.usernameInput, styles.shadowProp]} 
+            placeholder={'Password'}
+            onChangeText={(val) => setPassword(val)}
+          />
         </View>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'COnfirm Password'}/>
+          <TextInput 
+            style={[styles.usernameInput, styles.shadowProp]} 
+            placeholder={'Confirm Password'}
+            onChangeText={(val) => setConfirmPassword(val)}
+          />
         </View>
 
         <View style={{marginTop: 20}}>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
+            <Text 
+              onPress={handleSignup}
+              style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
               CREATE ACCOUNT
             </Text>
           </TouchableOpacity>

@@ -1,15 +1,29 @@
-import React from "react"
+import React, { useState } from "react"
 import { useNavigation } from '@react-navigation/native';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import auth from '../../services/auth'
 import { 
   StyleSheet, 
   TouchableOpacity, 
   Text, 
   View, 
-  TextInput 
+  TextInput
 } from 'react-native';
 
 export default function SignIn(){
   const navigation = useNavigation()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSignin = () => {
+    const data = {
+      email: email,
+      password: password
+    }
+    auth.signin(data).then((res) => {
+      console.log(res)
+    }).catch(error => console.log("Failed", error))
+  }
   
   return(
     <React.Fragment>
@@ -23,22 +37,37 @@ export default function SignIn(){
         </Text>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Username or email'}/>
+          <TextInput 
+            onChangeText={(val => setEmail(val))} 
+            style={[styles.usernameInput, styles.shadowProp]} 
+            placeholder={'Username or email'}
+          />
         </View>
 
         <View style={styles.container}>
-          <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Password'}/>
+          <TextInput 
+            onChangeText={(val => setPassword(val))} 
+            style={[styles.usernameInput, styles.shadowProp]}
+            placeholder={'Password'}
+          />
+        </View>
+
+        <View>
+          <BouncyCheckbox />       
         </View>
 
         <View style={{marginTop: 20}}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
+          <TouchableOpacity 
+            onPress={handleSignin} 
+            style={styles.button}
+          >
+            <Text style={styles.signinText}>
               Sign In
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 20}}>
+        <View style={styles.forgotPasswordContainer}>
           <Text>Forgot Password?</Text>
 
           <TouchableOpacity 
@@ -50,7 +79,7 @@ export default function SignIn(){
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 270}}>
+        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 200}}>
           <Text>Don't have an account?</Text>
           
           <TouchableOpacity 
@@ -67,6 +96,20 @@ export default function SignIn(){
 } 
 
 const styles = StyleSheet.create({
+  forgotPasswordContainer: {
+    flexDirection: 'row', 
+    marginLeft: 'auto', 
+    marginRight: 'auto', 
+    marginTop: 20
+  },
+
+  signinText: {
+    color: 'white', 
+    textAlign: 'center', 
+    paddingVertical: 13, 
+    fontSize: 18
+  },
+
   mainContainer: {
     backgroundColor: 'white',
   },
@@ -81,7 +124,7 @@ const styles = StyleSheet.create({
 
   textLogin: {
     textAlign: 'center',
-    color: '#E5B300',
+    color: '#514C4C',
     fontSize: 16,
     fontWeight: '700',
     marginTop: 70
