@@ -10,7 +10,7 @@ import CustomButton from '../components/CustomButton';
 
 
 
-export default function MathResultVerification() {
+export default function MatchResultVerification() {
     return (
       <SafeAreaView>
         <Header price='30' dp={require('../asset/images/dp.png')}/>
@@ -19,9 +19,7 @@ export default function MathResultVerification() {
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <MathResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
-            <MathResultVerificationCard price='20' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='1 v 1: Best out of 5'/>
-            <MathResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+            <MatchResultVerificationCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
         {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
@@ -29,7 +27,7 @@ export default function MathResultVerification() {
   }
 
 
-  function MathResultVerificationCard(props){
+  function MatchResultVerificationCard(props){
     return(
       <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
         <View style={styles.details}>
