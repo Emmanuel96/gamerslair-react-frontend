@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <MatchVerificationAfter/>
+      <NewChallenges/>
       <BottomNavBar/>
       <StatusBar style="auto" />
     </SafeAreaView>
