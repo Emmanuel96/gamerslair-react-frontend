@@ -1,7 +1,9 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback,} from 'react';
 import {StyleSheet, SafeAreaView, View,} from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
-import Header from '../components/Header'
+import { baseStyles } from '../style';
+
 import PageTitleBar from '../components/PageTitleBar'
 import DropDown from '../components/DropDown'
 import CustomTextInput from '../components/CustomTextInput';
@@ -9,7 +11,10 @@ import CustomButton from '../components/CustomButton';
 
 
 
-export default function CreateChallenge() {
+export default function CreateChallenge(props) {
+    useFocusEffect(()=>{
+        props.setPage('create_challenge')
+    })
     const [consoleOpen, setConsoleOpen] = useState(false);
     const [gameOpen, setGameOpen] = useState(false);
 
@@ -22,8 +27,7 @@ export default function CreateChallenge() {
     }, []);
 
     return (
-      <SafeAreaView>
-        <Header price='30' dp={require('../asset/images/dp.png')}/>
+      <SafeAreaView style={baseStyles.container}>
         <PageTitleBar title='CREATE CHALLENGE'/>
         <View style={styles.form}>
             <DropDown 

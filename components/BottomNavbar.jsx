@@ -1,18 +1,24 @@
 import React, {useEffect} from 'react';
 import { StyleSheet, View, Image,TouchableOpacity} from 'react-native';
 import { ShadowBox, NeomorphBox } from 'react-native-neomorph-shadows';  // https://www.npmjs.com/package/react-native-neomorph-shadows/v/0.0.8
+import { useNavigation  } from '@react-navigation/native';
 
 import { baseStyles } from '../style';
 
-export default function BottomNavBar(){
+export default function BottomNavBar(props){
+    const navigation = useNavigation();
+
     return(
         <View style={[baseStyles.shadowProp, styles.bottomNavbar]}>
             <View style={[styles.navbar_inner]}>
-                <TouchableOpacity style={[styles.navitem]}>
+                <TouchableOpacity 
+                    style={[styles.navitem]}
+                    onPress={() =>navigation.navigate('new-challenges')}
+                >
                     <ShadowBox
                         inner 
                         useSvg
-                        style={{...styles.shadowBox, ...styles.active}}
+                        style={props.page=="new_challenges" && {...styles.shadowBox, ...styles.active} || {...styles.shadowBox}}
                     >
                         <Image
                             source={require('../asset/icons/home.png')}
@@ -20,11 +26,14 @@ export default function BottomNavBar(){
                         />
                     </ShadowBox>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.navitem]}>
+                <TouchableOpacity 
+                    style={[styles.navitem]}
+                    onPress={() =>navigation.navigate('create-challenge')}
+                >
                     <ShadowBox
                         inner 
                         useSvg
-                        style={styles.shadowBox}
+                        style={props.page=="create_challenge" && {...styles.shadowBox, ...styles.active} || {...styles.shadowBox}}
                     >
                         <Image
                             source={require('../asset/icons/plus.png')}
@@ -32,11 +41,14 @@ export default function BottomNavBar(){
                         />
                     </ShadowBox>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.navitem]}>
+                <TouchableOpacity 
+                    style={[styles.navitem]}
+                    onPress={() =>navigation.navigate('ongoing-games')}
+                >
                     <ShadowBox
                         inner 
                         useSvg
-                        style={styles.shadowBox}
+                        style={props.page=="ongoing_games" && {...styles.shadowBox, ...styles.active} || {...styles.shadowBox}}
                     >
                         <Image
                             source={require('../asset/icons/gamepad.png')}

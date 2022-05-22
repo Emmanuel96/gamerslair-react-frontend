@@ -1,6 +1,12 @@
 import { StyleSheet} from 'react-native';
 
 export const baseStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+        // alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
     customColor:{
         color:'rgba(71, 66, 66, 1)',
     },

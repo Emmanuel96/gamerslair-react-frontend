@@ -1,38 +1,45 @@
-import React, {useState} from 'react';
+import React, {useState,} from 'react';
 import {StyleSheet, SafeAreaView, View, ScrollView, Text} from 'react-native';
-import PropTypes from 'prop-types';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { baseStyles } from '../style';
 
-import Header from '../components/Header'
 import PageTitleBar from '../components/PageTitleBar'
 import Card from '../components/Card'
 import CustomButton from '../components/CustomButton';
-import AcceptRejectChallengeCard from './AcceptRejectChallenge';
 
 
 
-export default function NewChallenges() {
+export default function NewChallenges(props) {
+  useFocusEffect(()=>{
+    props.setPage('new_challenges')
+  })
+
     return (
-      <SafeAreaView>
-        <Header price='30' dp={require('../asset/images/dp.png')}/>
+      <SafeAreaView style={baseStyles.container}>
         <PageTitleBar title='NEW CHALLENGES'/>
         <ScrollView
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <NewChallengeCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
-            <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
-            <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
-            <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+          <NewChallengeCard navigation={props.navigation} price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3' />
+          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
         {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     );
-  }
+}
 
 
   const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'white',
+      // alignItems: 'center',
+      justifyContent: 'flex-start',
+    },
     contentContainer: {
       paddingBottom: 400,
     },

@@ -1,20 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useState,} from 'react';
 import {StyleSheet, SafeAreaView, View, ScrollView, Text } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { baseStyles } from '../style';
 
-import Header from '../components/Header'
 import PageTitleBar from '../components/PageTitleBar'
 import Card from '../components/Card'
 import CustomButton from '../components/CustomButton';
 
 
 
-export default function OngoingGames() {
+
+export default function OngoingGames(props) {
+  useFocusEffect(()=>{
+    props.setPage('ongoing_games')
+  })
     return (
-      <SafeAreaView>
-        <Header price='30' dp={require('../asset/images/dp.png')}/>
-        <PageTitleBar title='NEW CHALLENGES'/>
+      <SafeAreaView style={baseStyles.container}>
+        <PageTitleBar title='ONGOING GAMES'/>
         <ScrollView
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
