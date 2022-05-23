@@ -19,5 +19,5 @@ export default function App() {
         <Stack.Screen name="reset-password" component={ResetPassword} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

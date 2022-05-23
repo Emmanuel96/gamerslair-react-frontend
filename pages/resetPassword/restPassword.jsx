@@ -12,15 +12,13 @@ export default function ResetPassword(){
   const navigation = useNavigation()
 
   return(
-    <React.Fragment>
+    <View style={styles.body}>
       <View style={styles.mainContainer}>
         <Text style={styles.textLogo}>GamersLAIR</Text>
 
-        <View style={[styles.card, styles.containerBox, styles.shadowProp, {marginTop: 70}]}>
-          <Text style={{fontSize: 18, textAlign: 'center', fontWeight: 'bold', color: '#747070'}}>
-            Enter the email you used in creating your GamersLair account. We’ll send you instructions to reset your password.
-          </Text>
-        </View>
+        <Text style={styles.textForgotPass}>
+          Forgot Password
+        </Text>
 
         <View style={[styles.container]}>
           <TextInput style={[styles.usernameInput, styles.shadowProp]} placeholder={'Email Address'}/>
@@ -34,7 +32,7 @@ export default function ResetPassword(){
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 260}}>
+        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 30}}>
           <Text>I remember now!</Text>
           
           <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 5, color: '#E5B300'}}>
@@ -44,11 +42,24 @@ export default function ResetPassword(){
           </TouchableOpacity>        
         </View>
       </View>
-    </React.Fragment>
+    </View>
   )
 } 
 
 const styles = StyleSheet.create({
+  body: {
+    height: "100%",
+    backgroundColor: 'white'
+  },
+  
+  textForgotPass: {
+    textAlign: 'center',
+    color: '#514C4C',
+    fontSize: 16,
+    fontWeight: '700',
+    marginTop: 70
+  },
+
   mainContainer: {
     backgroundColor: 'white',
   },
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    marginTop: 20,
+    marginTop: 40,
     marginLeft: 40,
     marginRight: 40,
     height: 55,

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useNavigation } from '@react-navigation/native'
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import auth from "../../services/auth"
 import { 
   StyleSheet, 
@@ -29,7 +30,7 @@ export default function SignUp(){
   }
 
   return(
-    <React.Fragment>
+    <View style={styles.body}>
       <View style={styles.mainContainer}>
         <Text style={styles.textLogo}>GamersLAIR</Text>
 
@@ -67,33 +68,50 @@ export default function SignUp(){
           />
         </View>
 
+        <View style={styles.ageBox}>
+          <BouncyCheckbox />    
+          <Text>I am 18 or above. I agree to the terms and ? Cookies policy</Text>   
+        </View>
+
         <View style={{marginTop: 20}}>
           <TouchableOpacity style={styles.button}>
             <Text 
               onPress={handleSignup}
               style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
-              CREATE ACCOUNT
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 190}}>
+        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 70}}>
           <Text>Already have an account?</Text>
 
           <TouchableOpacity 
             onPress={() => navigation.navigate('signin', { name: 'signin' })}
             style={{marginLeft: 5, color: '#E5B300'}}>
             <Text style={{color: '#E5B300',}}>
-              Click here
+              Sign In
             </Text>
           </TouchableOpacity>
         </View>
       </View>
-    </React.Fragment>
+    </View>
   )
 } 
 
 const styles = StyleSheet.create({
+  body: {
+    height: "100%",
+    backgroundColor: 'white'
+  },
+
+  ageBox: {
+    flexDirection: 'row', 
+    marginLeft: 40,
+    marginRight: 40,
+    marginTop: 20
+  },
+
   mainContainer: {
     backgroundColor: 'white',
   },
@@ -108,7 +126,7 @@ const styles = StyleSheet.create({
 
   textSignUp: {
     textAlign: 'center',
-    color: '#E5B300',
+    color: '#514C4C',
     fontSize: 16,
     fontWeight: '700',
     marginTop: 50

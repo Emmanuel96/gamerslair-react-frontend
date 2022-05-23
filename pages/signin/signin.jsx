@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useNavigation } from '@react-navigation/native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import auth from '../../services/auth'
+
 import { 
   StyleSheet, 
   TouchableOpacity, 
@@ -26,7 +27,7 @@ export default function SignIn(){
   }
   
   return(
-    <React.Fragment>
+    <View style={styles.body}>
       <View style={styles.mainContainer}>
         <Text style={styles.textLogo}>
           GamersLAIR
@@ -52,11 +53,12 @@ export default function SignIn(){
           />
         </View>
 
-        <View>
-          <BouncyCheckbox />       
+        <View style={styles.rememberMe}>
+          <BouncyCheckbox />    
+          <Text>Remember me</Text>   
         </View>
 
-        <View style={{marginTop: 20}}>
+        <View>
           <TouchableOpacity 
             onPress={handleSignin} 
             style={styles.button}
@@ -86,16 +88,28 @@ export default function SignIn(){
             onPress={() => navigation.navigate('signup', { name: 'signup' })}
             style={{marginLeft: 5, color: '#E5B300'}}>
             <Text style={{color: '#E5B300',}}>
-              Click here
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
       </View>
-    </React.Fragment>
+    </View>
   )
 } 
 
 const styles = StyleSheet.create({
+  body: {
+    height: "100%",
+    backgroundColor: 'white'
+  },
+
+  rememberMe: {
+    flexDirection: 'row', 
+    marginLeft: 40,
+    marginRight: 40,
+    marginTop: 20
+  },
+
   forgotPasswordContainer: {
     flexDirection: 'row', 
     marginLeft: 'auto', 
