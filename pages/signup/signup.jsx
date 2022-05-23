@@ -23,10 +23,7 @@ export default function SignUp(){
       email: email,
       password: password
     }
-    console.log(data)
-    auth.signup(data).then(res => {
-      console.log(res)
-    }).catch(error => console.log("Failed ", error))
+    auth.signup(data)
   }
 
   return(
@@ -73,22 +70,22 @@ export default function SignUp(){
           <Text>I am 18 or above. I agree to the terms and ? Cookies policy</Text>   
         </View>
 
-        <View style={{marginTop: 20}}>
+        <View style={styles.signUpContainer}>
           <TouchableOpacity style={styles.button}>
             <Text 
               onPress={handleSignup}
-              style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
+              style={styles.signupText}>
               Sign Up
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 70}}>
+        <View style={styles.haveAccount}>
           <Text>Already have an account?</Text>
 
           <TouchableOpacity 
             onPress={() => navigation.navigate('signin', { name: 'signin' })}
-            style={{marginLeft: 5, color: '#E5B300'}}>
+            style={styles.signinText}>
             <Text style={{color: '#E5B300',}}>
               Sign In
             </Text>
@@ -100,6 +97,29 @@ export default function SignUp(){
 } 
 
 const styles = StyleSheet.create({
+  signinText: {
+    marginLeft: 5, 
+    color: '#E5B300'
+  },
+
+  haveAccount: {
+    flexDirection: 'row', 
+    marginLeft: 'auto', 
+    marginRight: 'auto', 
+    marginTop: 70
+  },
+
+  signinText: {
+    color: 'white', 
+    textAlign: 'center', 
+    paddingVertical: 13, 
+    fontSize: 18
+  },
+
+  signUpContainer: {
+    marginTop: 20
+  },
+
   body: {
     height: "100%",
     backgroundColor: 'white'

@@ -21,9 +21,7 @@ export default function SignIn(){
       email: email,
       password: password
     }
-    auth.signin(data).then((res) => {
-      console.log(res)
-    }).catch(error => console.log("Failed", error))
+    auth.signin(data)
   }
   
   return(
@@ -74,20 +72,20 @@ export default function SignIn(){
 
           <TouchableOpacity 
             onPress={() => navigation.navigate('reset-password', { name: 'reset-password' })} 
-            style={{marginLeft: 5, color: '#E5B300'}}>
-            <Text style={{color: '#E5B300',}}>
+            style={styles.clickHereContainer}>
+            <Text style={styles.clickHereText}>
               Click here
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 200}}>
+        <View style={style.noAccountText}>
           <Text>Don't have an account?</Text>
           
           <TouchableOpacity 
             onPress={() => navigation.navigate('signup', { name: 'signup' })}
-            style={{marginLeft: 5, color: '#E5B300'}}>
-            <Text style={{color: '#E5B300',}}>
+            style={styles.signupContainer}>
+            <Text style={styles.color}>
               Sign Up
             </Text>
           </TouchableOpacity>
@@ -98,6 +96,31 @@ export default function SignIn(){
 } 
 
 const styles = StyleSheet.create({
+  color: {
+    color: '#E5B300'
+  },
+
+  signupContainer: {
+    marginLeft: 5, 
+    color: '#E5B300'
+  },
+
+  noAccountText: {
+    flexDirection: 'row', 
+    marginLeft: 'auto', 
+    marginRight: 'auto', 
+    marginTop: 200
+  },
+
+  clickHereText: {
+    color: '#E5B300'
+  },
+
+  clickHereContainer: {
+    marginLeft: 5, 
+    color: '#E5B300'
+  }
+
   body: {
     height: "100%",
     backgroundColor: 'white'
