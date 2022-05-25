@@ -1,12 +1,12 @@
 import React from "react"
-import { useNavigation } from '@react-navigation/native';
-import { 
-  StyleSheet, 
-  TouchableOpacity, 
-  Text, 
-  View, 
-  TextInput 
-} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  TextInput
+} from 'react-native'
 
 export default function ResetPassword(){
   const navigation = useNavigation()
@@ -26,32 +26,32 @@ export default function ResetPassword(){
 
         <View>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18}}>
+            <Text style={{ color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18 }}>
               Send
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 30}}>
+        <View style={{ flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 30 }}>
           <Text>I remember now!</Text>
-          
-          <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 5, color: '#E5B300'}}>
-            <Text style={{color: '#E5B300',}}>
+
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 5, color: '#E5B300' }}>
+            <Text style={{ color: '#E5B300' }}>
               Go back
             </Text>
-          </TouchableOpacity>        
+          </TouchableOpacity>
         </View>
       </View>
     </View>
   )
-} 
+}
 
 const styles = StyleSheet.create({
   body: {
     height: "100%",
     backgroundColor: 'white'
   },
-  
+
   textForgotPass: {
     textAlign: 'center',
     color: '#514C4C',
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#E5B300'
   },
-  
+
   usernameInput: {
     height: '100%',
     paddingLeft: 15,

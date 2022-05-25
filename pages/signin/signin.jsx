@@ -3,11 +3,11 @@ import { useNavigation } from '@react-navigation/native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import auth from '../../services/auth'
 
-import { 
-  StyleSheet, 
-  TouchableOpacity, 
-  Text, 
-  View, 
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
   TextInput
 } from 'react-native';
 
@@ -23,7 +23,7 @@ export default function SignIn(){
     }
     auth.signin(data)
   }
-  
+
   return(
     <View style={styles.body}>
       <View style={styles.mainContainer}>
@@ -36,29 +36,29 @@ export default function SignIn(){
         </Text>
 
         <View style={styles.container}>
-          <TextInput 
-            onChangeText={(val => setEmail(val))} 
-            style={[styles.usernameInput, styles.shadowProp]} 
+          <TextInput
+            onChangeText={(val => setEmail(val))}
+            style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Username or email'}
           />
         </View>
 
         <View style={styles.container}>
-          <TextInput 
-            onChangeText={(val => setPassword(val))} 
+          <TextInput
+            onChangeText={(val => setPassword(val))}
             style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Password'}
           />
         </View>
 
         <View style={styles.rememberMe}>
-          <BouncyCheckbox />    
-          <Text>Remember me</Text>   
+          <BouncyCheckbox />
+          <Text>Remember me</Text>
         </View>
 
         <View>
-          <TouchableOpacity 
-            onPress={handleSignin} 
+          <TouchableOpacity
+            onPress={handleSignin}
             style={styles.button}
           >
             <Text style={styles.signinText}>
@@ -70,8 +70,8 @@ export default function SignIn(){
         <View style={styles.forgotPasswordContainer}>
           <Text>Forgot Password?</Text>
 
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('reset-password', { name: 'reset-password' })} 
+          <TouchableOpacity
+            onPress={() => navigation.navigate('reset-password', { name: 'reset-password' })}
             style={styles.clickHereContainer}>
             <Text style={styles.clickHereText}>
               Click here
@@ -79,10 +79,10 @@ export default function SignIn(){
           </TouchableOpacity>
         </View>
 
-        <View style={style.noAccountText}>
+        <View style={styles.noAccountText}>
           <Text>Don't have an account?</Text>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             onPress={() => navigation.navigate('signup', { name: 'signup' })}
             style={styles.signupContainer}>
             <Text style={styles.color}>
@@ -93,7 +93,7 @@ export default function SignIn(){
       </View>
     </View>
   )
-} 
+}
 
 const styles = StyleSheet.create({
   color: {
@@ -101,14 +101,14 @@ const styles = StyleSheet.create({
   },
 
   signupContainer: {
-    marginLeft: 5, 
+    marginLeft: 5,
     color: '#E5B300'
   },
 
   noAccountText: {
-    flexDirection: 'row', 
-    marginLeft: 'auto', 
-    marginRight: 'auto', 
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginTop: 200
   },
 
@@ -117,9 +117,9 @@ const styles = StyleSheet.create({
   },
 
   clickHereContainer: {
-    marginLeft: 5, 
+    marginLeft: 5,
     color: '#E5B300'
-  }
+  },
 
   body: {
     height: "100%",
@@ -127,23 +127,23 @@ const styles = StyleSheet.create({
   },
 
   rememberMe: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     marginLeft: 40,
     marginRight: 40,
     marginTop: 20
   },
 
   forgotPasswordContainer: {
-    flexDirection: 'row', 
-    marginLeft: 'auto', 
-    marginRight: 'auto', 
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginTop: 20
   },
 
   signinText: {
-    color: 'white', 
-    textAlign: 'center', 
-    paddingVertical: 13, 
+    color: 'white',
+    textAlign: 'center',
+    paddingVertical: 13,
     fontSize: 18
   },
 
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginTop: 70
   },
-  
+
   usernameInput: {
     height: '100%',
     paddingLeft: 15,
@@ -200,4 +200,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#E5B300',
   }
-});
+})
