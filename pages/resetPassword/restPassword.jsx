@@ -26,17 +26,17 @@ export default function ResetPassword(){
 
         <View>
           <TouchableOpacity style={styles.button}>
-            <Text style={{ color: 'white', textAlign: 'center', paddingVertical: 13, fontSize: 18 }}>
+            <Text style={styles.sendText}>
               Send
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', marginTop: 30 }}>
+        <View style={styles.rememberNowContainer}>
           <Text>I remember now!</Text>
 
-          <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 5, color: '#E5B300' }}>
-            <Text style={{ color: '#E5B300' }}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.goBack}>
+            <Text style={styles.goBackText}>
               Go back
             </Text>
           </TouchableOpacity>
@@ -47,6 +47,29 @@ export default function ResetPassword(){
 }
 
 const styles = StyleSheet.create({
+  goBackText: {
+    color: '#E5B300'
+  },
+
+  goBack: {
+    marginLeft: 5,
+    color: '#E5B300'
+  },
+
+  rememberNowContainer: {
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 30
+  },
+
+  sendText: {
+    color: 'white',
+    textAlign: 'center',
+    paddingVertical: 13,
+    fontSize: 18
+  },
+
   body: {
     height: "100%",
     backgroundColor: 'white'

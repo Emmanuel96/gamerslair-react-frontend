@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useNavigation } from '@react-navigation/native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import auth from '../../services/auth'
+import auth from '../../helpers/auth'
 
 import {
   StyleSheet,
@@ -17,11 +17,11 @@ export default function SignIn(){
   const [password, setPassword] = useState('')
 
   const handleSignin = () => {
-    const data = {
+    const user = {
       email: email,
       password: password
     }
-    auth.signin(data)
+    auth.signin(user)
   }
 
   return(

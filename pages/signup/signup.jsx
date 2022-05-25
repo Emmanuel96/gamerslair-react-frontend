@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { useNavigation } from '@react-navigation/native'
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import auth from "../../services/auth"
-import { 
-  StyleSheet, 
-  TouchableOpacity, 
-  Text, 
-  View, 
-  TextInput 
+import auth from "../../helpers/auth"
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  TextInput
 } from 'react-native';
 
 export default function SignUp(){
@@ -15,15 +15,14 @@ export default function SignUp(){
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
 
   const handleSignup = () => {
-    const data = {
+    const newUser = {
       username: username,
       email: email,
       password: password
     }
-    auth.signup(data)
+    auth.signup(newUser)
   }
 
   return(
@@ -34,45 +33,44 @@ export default function SignUp(){
         <Text style={styles.textSignUp}>Create Account</Text>
 
         <View style={styles.container}>
-          <TextInput 
-            style={[styles.usernameInput, styles.shadowProp]} 
+          <TextInput
+            style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Username'}
             onChangeText={(val) => setUsername(val)}
           />
         </View>
 
         <View style={styles.container}>
-          <TextInput 
-            style={[styles.usernameInput, styles.shadowProp]} 
+          <TextInput
+            style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Email Address'}
             onChangeText={(val) => setEmail(val)}
           />
         </View>
 
         <View style={styles.container}>
-          <TextInput 
-            style={[styles.usernameInput, styles.shadowProp]} 
+          <TextInput
+            style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Password'}
             onChangeText={(val) => setPassword(val)}
           />
         </View>
 
         <View style={styles.container}>
-          <TextInput 
-            style={[styles.usernameInput, styles.shadowProp]} 
+          <TextInput
+            style={[styles.usernameInput, styles.shadowProp]}
             placeholder={'Confirm Password'}
-            onChangeText={(val) => setConfirmPassword(val)}
           />
         </View>
 
         <View style={styles.ageBox}>
-          <BouncyCheckbox />    
-          <Text>I am 18 or above. I agree to the terms and ? Cookies policy</Text>   
+          <BouncyCheckbox />
+          <Text>I am 18 or above. I agree to the terms and ? Cookies policy</Text>
         </View>
 
         <View style={styles.signUpContainer}>
           <TouchableOpacity style={styles.button}>
-            <Text 
+            <Text
               onPress={handleSignup}
               style={styles.signupText}>
               Sign Up
@@ -83,10 +81,10 @@ export default function SignUp(){
         <View style={styles.haveAccount}>
           <Text>Already have an account?</Text>
 
-          <TouchableOpacity 
+          <TouchableOpacity
             onPress={() => navigation.navigate('signin', { name: 'signin' })}
-            style={styles.signinText}>
-            <Text style={{color: '#E5B300',}}>
+            style={styles.signinTextContainer}>
+            <Text style={styles.signinText}>
               Sign In
             </Text>
           </TouchableOpacity>
@@ -94,26 +92,26 @@ export default function SignUp(){
       </View>
     </View>
   )
-} 
+}
 
 const styles = StyleSheet.create({
+  signupText: {
+    color: 'white',
+    textAlign: 'center',
+    paddingVertical: 13,
+    fontSize: 18
+  },
+
   signinText: {
-    marginLeft: 5, 
-    color: '#E5B300'
+    color: '#E5B300',
+    marginLeft: 10
   },
 
   haveAccount: {
-    flexDirection: 'row', 
-    marginLeft: 'auto', 
-    marginRight: 'auto', 
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginTop: 70
-  },
-
-  signinText: {
-    color: 'white', 
-    textAlign: 'center', 
-    paddingVertical: 13, 
-    fontSize: 18
   },
 
   signUpContainer: {
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
   },
 
   ageBox: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     marginLeft: 40,
     marginRight: 40,
     marginTop: 20
@@ -151,7 +149,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginTop: 50
   },
-  
+
   usernameInput: {
     height: '100%',
     paddingLeft: 15,
