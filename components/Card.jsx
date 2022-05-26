@@ -9,8 +9,8 @@ export default function Card(props){
     return(
         <View style={[baseStyles.shadowProp, styles.card]}>
             <View style={styles.card_heading}>
-                <Text style={[baseStyles.h5, baseStyles.textShadowProp, styles.game_title]}>FIFA 22 - XBOX ONE</Text>
-                <Text style={[baseStyles.h5,baseStyles.textShadowProp, styles.price]}>${props.price}</Text>
+                <Text style={[baseStyles.h5, baseStyles.textShadowProp, styles.game_title]}>{props.challenge.game} - {props.challenge.console}</Text>
+                <Text style={[baseStyles.h5,baseStyles.textShadowProp, styles.price]}>${props.challenge.bet_amount}</Text>
             </View>
 
             <View style={styles.card_body}>
@@ -18,7 +18,7 @@ export default function Card(props){
                     source={props.user_dp}
                     style={[baseStyles.dp, styles.challenger_dp]}
                 />
-                <Text style={[baseStyles.h5, baseStyles.textShadowProp,]}>{props.user_name}</Text>
+                <Text style={[baseStyles.h5, baseStyles.textShadowProp,]}>{props.challenge.sender}</Text>
             </View>
             
             <View style={styles.card_children}>
