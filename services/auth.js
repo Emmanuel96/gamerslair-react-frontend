@@ -1,13 +1,14 @@
 import axios from "axios"
+import { HOST } from "@env"
 
-const signin = async newObject => {
-  const request = axios.post('http://localhost:3002/api/auth/signin', newObject)
+const signin = async payload => {
+  const request = axios.post(`${HOST}/api/auth/signin`, payload)
   const res = await request;
   return res.data
 }
 
-const signup = async newObject => {
-  const request = axios.post('http://localhost:3002/api/auth/signup', newObject)
+const signup = async payload => {
+  const request = axios.post(`${HOST}/api/auth/signup`, payload)
   const res = await request;
   return res.data
 }
