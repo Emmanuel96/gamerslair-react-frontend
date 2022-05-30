@@ -2,12 +2,13 @@ import React, {useState, useCallback,} from 'react';
 import {StyleSheet, SafeAreaView, View,} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { baseStyles } from '../style';
+import styles from './styles'
+import { baseStyles } from '../../style';
 
-import PageTitleBar from '../components/PageTitleBar'
-import DropDown from '../components/DropDown'
-import CustomTextInput from '../components/CustomTextInput';
-import CustomButton from '../components/CustomButton';
+import PageTitleBar from '../../components/PageTitleBar'
+import DropDown from '../../components/DropDown'
+import CustomTextInput from '../../components/CustomTextInput';
+import CustomButton from '../../components/CustomButton';
 
 
 
@@ -65,17 +66,4 @@ export default function CreateChallenge(props) {
         </View>
       </SafeAreaView>
     );
-  }
-
-
-  const styles = StyleSheet.create({
-      form:{
-          width:'80%',
-          marginTop:'10%',
-          marginBottom:'20%',
-          alignSelf:'center',
-      },
-      form_field:{
-          marginBottom:'13%',
-      },
-  })
+}

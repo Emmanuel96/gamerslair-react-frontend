@@ -1,27 +1,27 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, SafeAreaView, View, ScrollView, Text } from 'react-native';
 
-import { baseStyles } from '../style';
+import styles from './styles'
+import { baseStyles } from '../../style';
 
-import Header from '../components/Header'
-import PageTitleBar from '../components/PageTitleBar'
-import Card from '../components/Card'
-import CustomButton from '../components/CustomButton';
+import Header from '../../components/Header'
+import PageTitleBar from '../../components/PageTitleBar'
+import Card from '../../components/Card'
+import CustomButton from '../../components/CustomButton';
 
 
 
 export default function MatchVerificationAfter() {
     return (
       <SafeAreaView>
-        <Header price='30' dp={require('../asset/images/dp.png')}/>
+        <Header price='30' dp={require('../../asset/images/dp.png')}/>
         <PageTitleBar title='NEW CHALLENGES'/>
         <ScrollView
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <MatchVerificationAfterCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
+            <MatchVerificationAfterCard price='30' user_name='Lewandowski' user_dp={require('../../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
-        {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     );
   }
@@ -45,27 +45,3 @@ export default function MatchVerificationAfter() {
       </Card>
     )
   }
-
-
-  const styles = StyleSheet.create({
-    contentContainer: {
-      paddingBottom: 400,
-    },
-    details:{
-      paddingHorizontal:'5%',
-      marginTop:8,
-      marginBottom:35,
-    },
-    detailsText:{
-      fontSize:21,
-      marginTop:10,
-    },
-    button:{
-        alignSelf:'center',
-        alignItems:'center',
-        marginBottom:15,
-        paddingVertical:25,
-        paddingHorizontal:25,
-        
-    }
-  })
