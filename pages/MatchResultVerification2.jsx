@@ -19,57 +19,56 @@ export default function MatchResultVerification2() {
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <MatchResultVerification2Card price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+          <MatchResultVerification2Card price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
-        {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     );
+}
+
+
+function MatchResultVerification2Card(props){
+  return(
+    <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
+      <View style={styles.details}>
+          <Text style={[baseStyles.bold, styles.detailsText]}>Lewandoski says he won the game</Text>  
+      </View>
+      <View style={styles.buttonGroup}>
+        <CustomButton
+          image={require('../asset/icons/check.png')}
+          backgroundColor='rgba(105, 139, 78, 1)'
+          style={styles.buttons}
+        />
+        <CustomButton
+          image={require('../asset/icons/close.png')}
+          backgroundColor='rgba(242, 36, 36, 1)'
+          style={styles.buttons}
+        />
+      </View>       
+    </Card>
+  )
+}
+
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingBottom: 400,
+  },
+  details:{
+    paddingHorizontal:'5%',
+    marginTop:8,
+    marginBottom:35,
+  },
+  detailsText:{
+    fontSize:17,
+    marginTop:10,
+  },
+  buttonGroup:{
+    alignSelf:'center',
+    flexDirection:'row',
+    alignItems:'center',
+    marginBottom:15,
+  },
+  buttons:{
+    marginHorizontal:20,
   }
-
-
-  function MatchResultVerification2Card(props){
-    return(
-      <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
-        <View style={styles.details}>
-            <Text style={[baseStyles.bold, styles.detailsText]}>Lewandoski says he won the game</Text>  
-        </View>
-        <View style={styles.buttonGroup}>
-          <CustomButton
-            image={require('../asset/icons/check.png')}
-            backgroundColor='rgba(105, 139, 78, 1)'
-            style={styles.buttons}
-          />
-          <CustomButton
-            image={require('../asset/icons/close.png')}
-            backgroundColor='rgba(242, 36, 36, 1)'
-            style={styles.buttons}
-          />
-        </View>       
-      </Card>
-    )
-  }
-
-
-  const styles = StyleSheet.create({
-    contentContainer: {
-      paddingBottom: 400,
-    },
-    details:{
-      paddingHorizontal:'5%',
-      marginTop:8,
-      marginBottom:35,
-    },
-    detailsText:{
-      fontSize:17,
-      marginTop:10,
-    },
-    buttonGroup:{
-        alignSelf:'center',
-        flexDirection:'row',
-        alignItems:'center',
-        marginBottom:15,
-    },
-    buttons:{
-        marginHorizontal:20,
-    }
-  })
+})

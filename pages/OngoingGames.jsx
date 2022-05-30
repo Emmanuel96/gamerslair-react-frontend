@@ -22,11 +22,10 @@ export default function OngoingGames(props) {
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <OngoingGamesCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+            <OngoingGamesCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
             <OngoingGamesCard price='20' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='1 v 1: Best out of 5'/>
-            <OngoingGamesCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+            <OngoingGamesCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
-        {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     );
   }

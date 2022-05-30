@@ -63,7 +63,6 @@ export default function CreateChallenge(props) {
                 />
             </View>
         </View>
-        {/* <StatusBar style="auto" /> */}
       </SafeAreaView>
     );
   }

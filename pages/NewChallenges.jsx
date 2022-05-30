@@ -15,21 +15,20 @@ export default function NewChallenges(props) {
     props.setPage('new_challenges')
   })
 
-    return (
-      <SafeAreaView style={baseStyles.container}>
-        <PageTitleBar title='NEW CHALLENGES'/>
-        <ScrollView
-          style={styles.scrollView} 
-          contentContainerStyle={styles.contentContainer}
-        >
-          <NewChallengeCard navigation={props.navigation} price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3' />
-          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
-          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
-          <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
-        </ScrollView>
-        {/* <StatusBar style="auto" /> */}
-      </SafeAreaView>
-    );
+  return (
+    <SafeAreaView style={baseStyles.container}>
+      <PageTitleBar title='NEW CHALLENGES'/>
+      <ScrollView
+        style={styles.scrollView} 
+        contentContainerStyle={styles.contentContainer}
+      >
+        <NewChallengeCard navigation={props.navigation} price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3' />
+        <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+        <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+        <NewChallengeCard price='100' user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 
@@ -37,7 +36,6 @@ export default function NewChallenges(props) {
     container: {
       flex: 1,
       backgroundColor: 'white',
-      // alignItems: 'center',
       justifyContent: 'flex-start',
     },
     contentContainer: {

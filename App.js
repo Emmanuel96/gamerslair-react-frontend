@@ -5,10 +5,8 @@ import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppLoading from 'expo-app-loading';
 
-// components
 import Header from './components/Header'
 import BottomNavBar from './components/BottomNavBar';
-// pages
 import NewChallenges from './pages/NewChallenges';
 import CreateChallenge from './pages/CreateChallenge';
 import OngoingGames from './pages/OngoingGames';
@@ -53,7 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    // alignItems: 'center',
     justifyContent: 'flex-start',
   },
 });

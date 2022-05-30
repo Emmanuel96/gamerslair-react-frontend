@@ -19,7 +19,7 @@ export default function MatchVerificationAfter() {
           style={styles.scrollView} 
           contentContainerStyle={styles.contentContainer}
         >
-            <MatchVerificationAfterCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/pic.png')} details='2 v 2: Best out of 3'/>
+            <MatchVerificationAfterCard price='30' user_name='Lewandowski' user_dp={require('../asset/images/dp.png')} details='2 v 2: Best out of 3'/>
         </ScrollView>
         {/* <StatusBar style="auto" /> */}
       </SafeAreaView>

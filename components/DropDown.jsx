@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';  //https://www.npmjs.com/package/react-native-dropdown-picker
+import DropDownPicker from 'react-native-dropdown-picker';
 import {StyleSheet} from 'react-native';
 
 import { baseStyles } from '../style';
@@ -14,7 +14,7 @@ export default function Dropdown(props) {
     return(
         <DropDownPicker
             placeholder={props.placeholder}
-            zIndex={props.zIndex}   //The zIndex and zIndexInverse props are necessary to avoid dropdowns overlapping when they are more than one on a page.
+            zIndex={props.zIndex}
             zIndexInverse={props.zIndexInverse}
             open={props.open}
             onOpen={props.onOpen}
