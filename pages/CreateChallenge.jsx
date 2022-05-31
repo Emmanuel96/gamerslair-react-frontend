@@ -3,7 +3,7 @@ import {StyleSheet, SafeAreaView, View, ScrollView, Alert} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import axios from 'axios';
 import { useForm} from "react-hook-form";
-import {BACKEND_HOST} from "@env"
+import {BACKEND_HOST, AUTH_ACCESS_TOKEN} from "@env"
 
 import { baseStyles } from '../style';
 
@@ -48,8 +48,13 @@ export default function CreateChallenge(props) {
     })
     useEffect(()=>{
         // fetch users
-        axios.get(`${BACKEND_HOST}/api/auth/fetch_all`)
-        .then(response =>{
+        axios.get(`${BACKEND_HOST}/api/auth/fetch_all`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${AUTH_ACCESS_TOKEN}`,
+                }
+            }
+        ).then(response =>{
             const userItem = response.data.reduce((result, user) =>{
                 if(user._id != authUser){
                     result.push( {label:user.username, value:user._id})
@@ -72,6 +77,7 @@ export default function CreateChallenge(props) {
             {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
+                    "Authorization": `Bearer ${AUTH_ACCESS_TOKEN}`
                 }
             }
         )
