@@ -12,7 +12,7 @@ export default function OngoingGamesCard(props){
     const [reported, setReported] = useState(false);
     const [verified, setVerified] = useState(false);
     return(
-      <Card price={props.price} user_name={props.user_name} user_dp={props.user_dp}>
+      <Card>
         {!reported &&
           <View style={styles.details}>
             <Text style={[baseStyles.h4, baseStyles.customColor]}>DETAILS:</Text>

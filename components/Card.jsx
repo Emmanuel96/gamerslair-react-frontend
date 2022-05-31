@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, Image,} from 'react-native';
+import PropTypes from 'prop-types';
 
 import { baseStyles } from '../style';
 
@@ -26,6 +27,17 @@ export default function Card(props){
             </View>
         </View>
     )
+}
+Card.defaultProps={
+    challenge:{
+        sender:{
+            username:"_"
+        },
+        game:"_",
+        console:"_",
+        bet_amount:"_",
+
+    }
 }
 
 const styles = StyleSheet.create({
