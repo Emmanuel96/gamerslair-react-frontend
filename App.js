@@ -5,20 +5,20 @@ import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppLoading from 'expo-app-loading';
 
-// components
+import { baseStyles } from './style';
+
 import Header from './components/Header'
 import BottomNavBar from './components/BottomNavBar';
-// pages
-import NewChallenges from './pages/NewChallenges';
-import CreateChallenge from './pages/CreateChallenge';
-import OngoingGames from './pages/OngoingGames';
+import NewChallenges from './pages/NewChallenges/NewChallenges';
+import CreateChallenge from './pages/CreateChallenge/CreateChallenge';
+import OngoingGames from './pages/OngoingGames/OngoingGames';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [page, setPage] = useState('new_challenges');
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
         <Header price='30' dp={require('./asset/images/dp.png')}/>
         <Stack.Navigator initialRouteName="new-challenges">
@@ -48,12 +48,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    // alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-});

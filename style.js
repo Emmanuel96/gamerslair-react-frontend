@@ -4,7 +4,6 @@ export const baseStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        // alignItems: 'center',
         justifyContent: 'flex-start',
     },
     customColor:{

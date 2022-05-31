@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';  //https://www.npmjs.com/package/react-native-dropdown-picker
+import DropDownPicker from 'react-native-dropdown-picker';
 import {StyleSheet} from 'react-native';
 import { Controller } from "react-hook-form";
 
