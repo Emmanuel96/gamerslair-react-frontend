@@ -11,7 +11,6 @@ import Card from '../components/Card'
 import CustomButton from '../components/CustomButton';
 
 export default function NewChallenges(props) {
-  const [authUser, setAuthUser] = useState('628cc5f543bca80fbb5a1624');
   const [challenges, setChallenges] = useState([]);
   useFocusEffect(()=>{
     props.setPage('new_challenges')
@@ -39,7 +38,7 @@ export default function NewChallenges(props) {
           contentContainerStyle={styles.contentContainer}
         >
           {challenges.map((challenge) =>
-            <NewChallengeCard challenge={challenge} user_name='Stephen' user_dp={require('../asset/icons/user.png')} details='2 v 2: Best out of 3'/>
+            <NewChallengeCard challenge={challenge}/>
           )}
         </ScrollView>
       </SafeAreaView>
@@ -49,7 +48,7 @@ export default function NewChallenges(props) {
 function NewChallengeCard(props){
   const [view, setView] = useState(false);
   return(
-    <Card challenge={props.challenge} user_name={props.user_name} user_dp={props.user_dp}>
+    <Card challenge={props.challenge}>
       {/* view details button */}
       {!view &&
         <View style={styles.view_button}>

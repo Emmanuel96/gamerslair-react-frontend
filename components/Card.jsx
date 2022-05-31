@@ -15,10 +15,10 @@ export default function Card(props){
 
             <View style={styles.card_body}>
                 <Image 
-                    source={props.user_dp}
+                    source={require('../asset/icons/user.png')}
                     style={[baseStyles.dp, styles.challenger_dp]}
                 />
-                <Text style={[baseStyles.h5, baseStyles.textShadowProp,]}>{props.challenge.sender}</Text>
+                <Text style={[baseStyles.h5, baseStyles.textShadowProp,]}>{props.challenge.sender.username}</Text>
             </View>
             
             <View style={styles.card_children}>

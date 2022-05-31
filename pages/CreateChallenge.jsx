@@ -3,7 +3,7 @@ import {StyleSheet, SafeAreaView, View, ScrollView, Alert} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import axios from 'axios';
 import { useForm} from "react-hook-form";
-import {BACKEND_HOST, AUTH_ACCESS_TOKEN} from "@env"
+import {BACKEND_HOST, AUTH_ACCESS_TOKEN, AUTH_USER_ID} from "@env"
 
 import { baseStyles } from '../style';
 
@@ -15,7 +15,6 @@ import CustomButton from '../components/CustomButton';
 
 
 export default function CreateChallenge(props) {
-    const [authUser, setAuthUser] = useState('628cc5f543bca80fbb5a1624');
     const [consoleOpen, setConsoleOpen] = useState(false);
     const [gameOpen, setGameOpen] = useState(false);
     const [recieverOpen, setRecieverOpen] = useState(false);
@@ -56,7 +55,7 @@ export default function CreateChallenge(props) {
             }
         ).then(response =>{
             const userItem = response.data.reduce((result, user) =>{
-                if(user._id != authUser){
+                if(user._id != AUTH_USER_ID){
                     result.push( {label:user.username, value:user._id})
                 }
                 return result
@@ -71,7 +70,6 @@ export default function CreateChallenge(props) {
     const { control, handleSubmit, formState: { errors } } = useForm({});
     
     const onSubmit = data => {
-        data.sender_id = authUser
         axios.post(`${BACKEND_HOST}/api/challenge/create`, 
             data,
             {
