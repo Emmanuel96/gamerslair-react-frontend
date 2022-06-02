@@ -7,10 +7,12 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@expo-google-fonts/rosario": "^0.2.2",
+    "@react-native-community/checkbox": "^0.5.12",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "axios": "^0.27.2",
@@ -22,17 +24,30 @@
     "react-dom": "17.0.1",
     "react-hook-form": "^7.31.2",
     "react-native": "0.64.3",
+    "react-native-bouncy-checkbox": "^2.1.10",
     "react-native-dotenv": "^3.3.1",
     "react-native-dropdown-picker": "^5.4.2",
     "react-native-neomorph-shadows": "0.0.8",
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
     "react-native-svg": "^12.1.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "dotenv": "^16.0.1"
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/jest-native": "^4.0.5",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/react-native": "^9.1.0",
+    "@testing-library/user-event": "^14.2.0",
+    "eslint": "^8.16.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-react": "^7.30.0",
+    "jest": "^28.1.0",
+    "jest-expo": "^45.0.1",
+    "react-test-renderer": "^17.0.1"
   },
   "private": true
 }

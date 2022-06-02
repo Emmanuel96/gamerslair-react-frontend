@@ -7,6 +7,11 @@ import AppLoading from 'expo-app-loading';
 
 import { baseStyles } from './style';
 
+import Landing from './pages/landing/landing'
+import SignIn from './pages/signin/signin'
+import SignUp from './pages/signup/signup'
+import ResetPassword from './pages/resetPassword/restPassword'
+
 import Header from './components/Header'
 import BottomNavBar from './components/BottomNavBar';
 import NewChallenges from './pages/NewChallenges/NewChallenges';
@@ -47,4 +52,12 @@ export default function App() {
       </NavigationContainer>
     </SafeAreaView>
   );
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="landing" component={Landing} />
+        <Stack.Screen name="signin" component={SignIn} />
+        <Stack.Screen name="signup" component={SignUp} />
+        <Stack.Screen name="reset-password" component={ResetPassword} />
+      </Stack.Navigator>
+    </NavigationContainer>
 }
