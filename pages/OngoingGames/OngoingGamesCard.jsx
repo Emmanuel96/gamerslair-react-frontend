@@ -12,11 +12,11 @@ export default function OngoingGamesCard(props){
     const [reported, setReported] = useState(false);
     const [verified, setVerified] = useState(false);
     return(
-      <Card>
+      <Card challenge={props.game}>
         {!reported &&
           <View style={styles.details}>
             <Text style={[baseStyles.h4, baseStyles.customColor]}>DETAILS:</Text>
-            <Text style={[styles.detailsText]}>{props.details}</Text> 
+            <Text style={[styles.detailsText]}>{props.game.rules}</Text> 
           </View>
         }
   

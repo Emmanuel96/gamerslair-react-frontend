@@ -43,5 +43,10 @@ export const baseStyles = StyleSheet.create({
         height:40,
         borderRadius:50,
     },
+    blank:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+    },
     
 })

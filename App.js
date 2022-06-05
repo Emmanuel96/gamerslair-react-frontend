@@ -22,42 +22,31 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [page, setPage] = useState('new_challenges');
+  const [authenticated, setAuthenticated] = useState(false);
+  
   return (
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
-        <Header price='30' dp={require('./asset/images/dp.png')}/>
-        <Stack.Navigator initialRouteName="new-challenges">
-          {/* newChallenges page */}
-          <Stack.Screen name="new-challenges"
-            options={{headerShown:false}}
-          >
-            {(props) => <NewChallenges {...props} setPage={setPage} page={page}/>}
+        {authenticated && <Header price='30' dp={require('./asset/images/dp.png')}/>}
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="landing" component={Landing} />
+          <Stack.Screen name="signin">
+          {(props) => <SignIn {...props} setAuthenticated={setAuthenticated} authenticated={authenticated}/>}
           </Stack.Screen>
-
-          {/* ongoingGames page */}
-          <Stack.Screen name="ongoing-games"
-            options={{headerShown:false}}
-          >  
+          <Stack.Screen name="signup" component={SignUp} />
+          <Stack.Screen name="reset-password" component={ResetPassword} />
+          <Stack.Screen name="new-challenges">
+            {(props) => <NewChallenges {...props} setAuthenticated={setAuthenticated} authenticated={authenticated} setPage={setPage} page={page}/>}
+          </Stack.Screen>
+          <Stack.Screen name="ongoing-games">  
             {(props) => <OngoingGames {...props} setPage={setPage}/>}
           </Stack.Screen>
-
-          {/* createChallenge page */}
-          <Stack.Screen name="create-challenge"
-            options={{headerShown:false}}
-          >  
+          <Stack.Screen name="create-challenge">  
             {(props) => <CreateChallenge {...props} setPage={setPage}/>}
           </Stack.Screen>
         </Stack.Navigator>
-        <BottomNavBar page={page}/>
+        {authenticated && <BottomNavBar page={page}/>}
       </NavigationContainer>
     </SafeAreaView>
   );
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="landing" component={Landing} />
-        <Stack.Screen name="signin" component={SignIn} />
-        <Stack.Screen name="signup" component={SignUp} />
-        <Stack.Screen name="reset-password" component={ResetPassword} />
-      </Stack.Navigator>
-    </NavigationContainer>
 }

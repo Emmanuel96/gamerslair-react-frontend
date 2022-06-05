@@ -2,6 +2,7 @@ import axios from "axios"
 import { HOST } from "@env"
 
 const signin = async payload => {
+  console.log(HOST)
   const request = axios.post(`${HOST}/api/auth/signin`, payload)
   const res = await request;
   return res.data

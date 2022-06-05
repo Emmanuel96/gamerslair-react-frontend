@@ -1,9 +1,12 @@
 import React, {useState, useCallback, useEffect} from 'react';
-import {StyleSheet, SafeAreaView, View, ScrollView, Alert} from 'react-native';
+import {SafeAreaView, View, ScrollView, Alert} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { useForm} from "react-hook-form";
-import {BACKEND_HOST, AUTH_ACCES_TOKEN, AUTH_USER_ID} from "@env"
+import {HOST} from "@env"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import handleCreateChallenge from "../../helpers/challenges/handleCreateChallenge"
 
 import styles from './styles'
 import { baseStyles } from '../../style';
@@ -16,6 +19,7 @@ import CustomButton from '../../components/CustomButton';
 
 
 export default function CreateChallenge(props) {
+    const navigation = useNavigation()
     const [consoleOpen, setConsoleOpen] = useState(false);
     const [gameOpen, setGameOpen] = useState(false);
     const [recieverOpen, setRecieverOpen] = useState(false);
@@ -46,48 +50,55 @@ export default function CreateChallenge(props) {
     useFocusEffect(()=>{
         props.setPage('create_challenge')
     })
-    useEffect(()=>{
+    useEffect( async ()=>{
         // fetch users
-        axios.get(`${BACKEND_HOST}/api/auth/fetch_all`,
-            {
-                headers: {
-                    "Authorization": `Bearer ${AUTH_ACCES_TOKEN}`,
-                }
+        try {
+            const accessToken = await AsyncStorage.getItem('@accessToken')
+            const user_id = await AsyncStorage.getItem('@user_id')
+            if(accessToken == null) {
+              props.setAuthenticated(false)
+              navigation.navigate('signin', { name: 'signin' })
             }
-        ).then(response =>{
-            const userItem = response.data.reduce((result, user) =>{
-                if(user._id != AUTH_USER_ID){
-                    result.push( {label:user.username, value:user._id})
+            axios.get(`${HOST}/api/auth/fetch_all`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${accessToken}`,
+                    }
                 }
-                return result
-            }, [])
-            setUserItems(userItem)
-        }).catch(error=>{
-            console.log(error)
-            alert('Unable to fetch users');
-        })
+            ).then(response =>{
+                const userItem = response.data.reduce((result, user) =>{
+                    if(user._id != user_id){
+                        result.push( {label:user.username, value:user._id})
+                    }
+                    return result
+                }, [])
+                setUserItems(userItem)
+            }).catch(error=>{
+                console.log(error)
+                alert('Unable to fetch users');
+            })
+          } catch(e) {
+            alert(e)
+            console.log(e)
+          }
+        
     },[])
     
     const { control, handleSubmit, formState: { errors } } = useForm({});
     
-    const onSubmit = data => {
-        axios.post(`${BACKEND_HOST}/api/challenge/create`, 
-            data,
-            {
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8",
-                    "Authorization": `Bearer ${AUTH_ACCES_TOKEN}`
-                }
+    const onSubmit = async data =>{
+        await handleCreateChallenge(data).then(response =>{
+            alert(`Challenge successfully sent to ${response.response.data.savedChallenge.reciever.username}`);
+        }).catch(err =>{
+            if(err == 'null_access'){
+                props.setAuthenticated(false)
+                navigation.navigate('signin', { name: 'signin' })
+            }else{
+                alert(err)
             }
-        )
-        .then(response=>{
-            console.log(response.data)
-            alert(`Challenge successfully sent to ${response.data.savedChallenge.reciever.username}`);
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+        })        
     }
+
     return (
       <SafeAreaView style={baseStyles.container}>
         <PageTitleBar title='CREATE CHALLENGE'/>
