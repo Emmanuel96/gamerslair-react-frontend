@@ -31,5 +31,8 @@ export default StyleSheet.create({
       marginHorizontal:15,
       paddingHorizontal:20,
       paddingVertical:13,
-    }
+    },
+    pending_button:{
+      alignSelf:'center',
+    },
 })
