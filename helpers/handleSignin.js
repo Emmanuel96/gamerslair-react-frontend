@@ -10,7 +10,7 @@ export default async function handleSignin(email, password){
   const response = await auth
     .signin(user)
     .then(async res => {
-      logger.info(res)
+      // logger.info(res)
       try {
         await AsyncStorage.setItem('@accessToken', res.accessToken)          
         await AsyncStorage.setItem('@user_id', res.user.id)          

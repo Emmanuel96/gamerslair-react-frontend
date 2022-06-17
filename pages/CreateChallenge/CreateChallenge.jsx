@@ -4,7 +4,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { useForm} from "react-hook-form";
-import {HOST} from "@env"
+import {HOST } from "@env"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import handleCreateChallenge from "../../helpers/challenges/handleCreateChallenge"
 

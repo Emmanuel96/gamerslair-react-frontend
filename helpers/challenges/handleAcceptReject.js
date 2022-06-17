@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {HOST} from "@env"
+import {HOST } from "@env"
 import axios from 'axios';
 
 export default async function (id, data){

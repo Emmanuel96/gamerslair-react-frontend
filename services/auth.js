@@ -1,5 +1,5 @@
 import axios from "axios"
-import { HOST } from "@env"
+import { HOST} from "@env"
 
 const signin = async payload => {
   console.log(HOST)
