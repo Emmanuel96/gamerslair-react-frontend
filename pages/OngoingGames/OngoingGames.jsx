@@ -12,13 +12,14 @@ import handleFetchGames from '../../helpers/games/handleFetchGames';
 
 export default function OngoingGames(props) {
   const [games, setGames] = useState([]);
+
   useFocusEffect(()=>{
     props.setPage('ongoing_games')
   })
   
   useEffect(()=>{
     handleFetchGames().then(response =>{
-      console.log(response.response.data)
+      // console.log(response.response.data)
       setGames(response.response.data)
     }).catch(err =>{
         if(err == 'null_access'){
@@ -40,9 +41,13 @@ export default function OngoingGames(props) {
           contentContainerStyle={styles.contentContainer}
           automaticallyAdjustContentInsets={true}
         >
-          {games.map((game) =>
-            <OngoingGamesCard game={game}/>
-          )}
+          {
+            React.Children.toArray(
+              games.map((game) =>
+                <OngoingGamesCard game={game}/>
+              )
+            )
+          }
         </ScrollView>||
         <View style={baseStyles.blank}>
           <Text style={baseStyles.customColor}>No games found for now.</Text>

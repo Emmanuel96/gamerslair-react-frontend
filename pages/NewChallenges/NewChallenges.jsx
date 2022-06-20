@@ -1,62 +1,58 @@
 import React, {useState,useEffect} from 'react';
 import {SafeAreaView,ScrollView, View, Text} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import axios from 'axios';
-import {HOST } from "@env"
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { io } from "socket.io-client";
+import {socket} from '../../services/socket';
 
 import styles from './styles'
 import { baseStyles } from '../../style';
 
 import NewChallengeCard from './NewChallengeCard';
 import PageTitleBar from '../../components/PageTitleBar'
+import handleFetchChallenges from '../../helpers/challenges/handleFetchChallenges';
 
 export default function NewChallenges(props) {
   const [challenges, setChallenges] = useState([]);
-  const [socket, setSocket] = useState([]);
 
   useFocusEffect(()=>{
     props.setPage('new_challenges')
   })
 
-  useEffect(async ()=>{
-    try {
-      const accessToken = await AsyncStorage.getItem('@accessToken')
-      const userId = await AsyncStorage.getItem('@user_id')
-      if(accessToken == null || userId == null) {
-        props.setAuthenticated(false)
-        navigation.navigate('signin', { name: 'signin' })
+  useEffect(()=>{
+    handleFetchChallenges().then(response =>{
+      setChallenges(response.response.data)
+    }).catch(err =>{
+      setChallenges([])
+      if(err == 'null_access'){
+          props.setAuthenticated(false)
+          navigation.navigate('signin', { name: 'signin' })
+      }else{
+          alert(`Unable to fetch challenges \n ${err}`)
+          console.log(err)
       }
-      axios.get(`${HOST}/api/challenge/fetch_incoming`,
-        {
-          headers:{
-            "Authorization": `Bearer ${accessToken}`
-          }
-        }
-      ).then(response =>{
-          setChallenges(response.data)
-      }).catch(error=>{
-          console.log(error)
-          alert('Unable to fetch challenges');
-          setChallenges([])
+    })
+  }, [props.authenticated])
+
+  useEffect(()=>{
+    const challengeListener = (response)=>{
+      setChallenges((prevChallenges)=>{
+        const updatedChallenges = [response.newChallenge, ...prevChallenges]
+        return updatedChallenges
       })
-      
-      setSocket(() => io(HOST, {auth:{userId:userId}, autoConnect: false }))
+    }
+
+    AsyncStorage.getItem('@user_id').then(userId =>{
+      socket.auth = {userId}
       if(!socket.connected){
         socket.connect()
       }
-
-      socket.on('new-challenge', ({challenge}) =>{
-        setChallenges(()=> [challenge, ...challenges])
-      })
-
-    } catch(e) {
-      alert("unable to fetch access token")
-      console.log(e)
-    }
-    
-  }, [props.authenticated])
+      socket.on('new-event', ()=>console.log('new-event'))
+      socket.on('new-challenge', challengeListener)
+    }).catch(err=>{
+      alert(err)
+      console.log(err)
+    })
+  }, [])
 
   return (
     <SafeAreaView style={baseStyles.container}>
@@ -67,9 +63,13 @@ export default function NewChallenges(props) {
           contentContainerStyle={styles.contentContainer}
           automaticallyAdjustContentInsets={true}
         >
-          {challenges.map((challenge) =>
-            <NewChallengeCard challenge={challenge}/>
-          )}
+          {
+            React.Children.toArray(
+              challenges.map((challenge) =>
+                <NewChallengeCard challenge={challenge}/>
+              )
+            )
+          }
         </ScrollView>||
         <View style={styles.blank}>
           <Text style={baseStyles.customColor}>No challenges found for now.</Text>
