@@ -19,7 +19,6 @@ export default function OngoingGames(props) {
   
   useEffect(()=>{
     handleFetchGames().then(response =>{
-      // console.log(response.response.data)
       setGames(response.response.data)
     }).catch(err =>{
         if(err == 'null_access'){
