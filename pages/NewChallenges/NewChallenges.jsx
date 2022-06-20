@@ -44,12 +44,10 @@ export default function NewChallenges(props) {
     
     AsyncStorage.multiGet(['@user_id','@socket_session_id']).then((data) =>{
       socket.auth= {'userId':data[0][1], 'sessionID':data[1][1]}
-      console.log(data)
       if(!socket.connected){
         console.log('connecting...')
         socket.connect()
       }
-      socket.on('new-event', ()=>console.log('new-event'))
       socket.on('new-challenge', challengeListener)
     }).catch(err=>{
       alert(err)

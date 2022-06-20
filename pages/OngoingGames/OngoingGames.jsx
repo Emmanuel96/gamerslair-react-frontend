@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { SafeAreaView, ScrollView, View, Text} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import {socket} from '../../services/socket';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './styles'
 import { baseStyles } from '../../style';
@@ -30,6 +32,30 @@ export default function OngoingGames(props) {
         }
     })
   },[])
+
+  useEffect(()=>{
+    const challengeResponseListener = (response)=>{
+      console.log('challenge response')
+      if(response.response == 'accepted'){
+        setGames((prevGames)=>{
+          const updatedGames = [response.game, ...prevGames]
+          return updatedGames
+        })
+      }
+    }
+
+    AsyncStorage.multiGet(['@user_id','@socket_session_id']).then((data) =>{
+      socket.auth= {'userId':data[0][1], 'sessionID':data[1][1]}
+      if(!socket.connected){
+        console.log('connecting...')
+        socket.connect()
+      }
+      socket.on('challenge-response', challengeResponseListener)
+    }).catch(err=>{
+      alert(err)
+      console.log(err)
+    })
+  }, [])
 
   return (
     <SafeAreaView style={baseStyles.container}>
