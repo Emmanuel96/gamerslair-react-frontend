@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import handleReportGame from '../../helpers/games/handleReportGame';
 import handleVerify from '../../helpers/games/handleVerify';
+import {socket} from '../../services/socket';
 
 import styles from './styles'
 import { baseStyles } from '../../style';
@@ -10,11 +11,12 @@ import { baseStyles } from '../../style';
 import Card from '../../components/Card'
 import CustomButton from '../../components/CustomButton';
 
-export default function OngoingGamesCard(props){
+export default function OngoingGamesCard({game}){
+    const [thisGame, setThisGame] = useState(game)
     const [report, setReport] = useState(false);
     const [reported, setReported] = useState(false);
     const [verified, setVerified] = useState(false);
-    const [reporter, setReporter] = useState(props.game.reported_by == undefined?'':props.game.reported_by._id)
+    const [reporter, setReporter] = useState(thisGame.reported_by == undefined?'':thisGame.reported_by._id)
     const [user_id, setUserId] = useState();
 
     useEffect(async ()=>{
@@ -29,15 +31,41 @@ export default function OngoingGamesCard(props){
       } catch(e) {
           throw e
       }
-      if(props.game.progress == "reported" || props.game.progress == "verified"){
+      if(thisGame.progress == "reported" || thisGame.progress == "verified"){
         setReport(true)
         setReported(true)
       }
-    },[])
+    },[thisGame])
+
+    useEffect(()=>{
+      const gameReportListener = (reportedGame)=>{
+        console.log('game report')
+        if(reportedGame._id == game._id){
+          setThisGame((prevThisGame)=>{
+            const updatedThisGame = reportedGame
+            return updatedThisGame
+          })
+          
+          // console.log(thisGame)
+        }
+      }
+  
+      AsyncStorage.multiGet(['@user_id','@socket_session_id']).then((data) =>{
+        socket.auth= {'userId':data[0][1], 'sessionID':data[1][1]}
+        if(!socket.connected){
+          console.log('connecting...')
+          socket.connect()
+        }
+        socket.on('game-report', gameReportListener)
+      }).catch(err=>{
+        alert(err)
+        console.log(err)
+      })
+    }, [])
 
     const report_result = (data) =>{
       const body={'report':data}
-      handleReportGame(props.game._id, body).then(response =>{
+      handleReportGame(thisGame._id, body).then(response =>{
         setReporter(response.response.data.reportedGame.reported_by._id)
         setReported(true)
       }).catch(err =>{
@@ -53,7 +81,7 @@ export default function OngoingGamesCard(props){
 
     const verify = (data) =>{
       const body={'report':data}
-      handleVerify(props.game._id, body).then(response=>{
+      handleVerify(thisGame._id, body).then(response=>{
         console.log(response.response.data)
         if(response.response.data.verifiedGame.progress == 'verified'){
           setVerified(true)
@@ -73,11 +101,11 @@ export default function OngoingGamesCard(props){
     }
 
     return(
-      <Card challenge={props.game}>
+      <Card challenge={thisGame}>
         {!reported &&
           <View style={styles.details}>
             <Text style={[baseStyles.h4, baseStyles.customColor]}>DETAILS:</Text>
-            <Text style={[styles.detailsText]}>{props.game.rules}</Text> 
+            <Text style={[styles.detailsText]}>{thisGame.rules}</Text> 
           </View>
         }
   
@@ -128,7 +156,7 @@ export default function OngoingGamesCard(props){
                   </View>||
                   <View>
                     <View style={styles.details}>
-                        <Text style={[baseStyles.bold, styles.detailsText]}>{props.game.reported_by.username} says {props.game.reported_by._id == props.game.winner._id ? 'he' : 'you'} won the game</Text>  
+                        <Text style={[baseStyles.bold, styles.detailsText]}>{thisGame.reported_by.username} says {thisGame.reported_by._id == thisGame.winner._id ? 'he' : 'you'} won the game</Text>  
                     </View>
                     <View style={styles.buttonGroup}>
                       <CustomButton
@@ -151,7 +179,7 @@ export default function OngoingGamesCard(props){
           </View> ||
   
           <View>
-            {props.game.winner._id == user_id &&
+            {thisGame.winner._id == user_id &&
               <CustomButton
                 title="YOU WON THIS GAME"
                 color="#fff"

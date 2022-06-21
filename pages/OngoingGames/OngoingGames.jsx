@@ -35,7 +35,6 @@ export default function OngoingGames(props) {
 
   useEffect(()=>{
     const challengeResponseListener = (response)=>{
-      console.log('challenge response')
       if(response.response == 'accepted'){
         setGames((prevGames)=>{
           const updatedGames = [response.game, ...prevGames]
@@ -68,9 +67,9 @@ export default function OngoingGames(props) {
         >
           {
             React.Children.toArray(
-              games.map((game) =>
-                <OngoingGamesCard game={game}/>
-              )
+              games.map((game) =>{
+                return <OngoingGamesCard game={game}/>
+              })
             )
           }
         </ScrollView>||
