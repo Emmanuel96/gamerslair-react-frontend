@@ -8,7 +8,7 @@ import {socket} from '../../services/socket';
 import styles from './styles'
 import { baseStyles } from '../../style';
 
-import Card from '../../components/Card'
+import Card from '../../components/Card';
 import CustomButton from '../../components/CustomButton';
 
 export default function OngoingGamesCard({game}){
@@ -35,6 +35,9 @@ export default function OngoingGamesCard({game}){
         setReport(true)
         setReported(true)
       }
+      if(thisGame.progress == 'verified'){
+        setVerified(true)
+      }
     },[thisGame])
 
     useEffect(()=>{
@@ -44,9 +47,20 @@ export default function OngoingGamesCard({game}){
           setThisGame((prevThisGame)=>{
             const updatedThisGame = reportedGame
             return updatedThisGame
-          })
-          
-          // console.log(thisGame)
+          })          
+        }
+      }
+
+      const gameVerificationListener = (verifiedGame)=>{
+        if(verifiedGame._id == game._id){
+          console.log('game-verified')
+          setThisGame(verifiedGame)
+          if(verifiedGame.progress == 'verified'){
+            setVerified(true)
+          }else{
+            setReported(false)
+            setReport(false)
+          }
         }
       }
   
@@ -57,6 +71,7 @@ export default function OngoingGamesCard({game}){
           socket.connect()
         }
         socket.on('game-report', gameReportListener)
+        socket.on('game-verified', gameVerificationListener)
       }).catch(err=>{
         alert(err)
         console.log(err)
@@ -82,7 +97,7 @@ export default function OngoingGamesCard({game}){
     const verify = (data) =>{
       const body={'report':data}
       handleVerify(thisGame._id, body).then(response=>{
-        console.log(response.response.data)
+        // console.log(response.response.data)
         if(response.response.data.verifiedGame.progress == 'verified'){
           setVerified(true)
         }else{
@@ -186,11 +201,6 @@ export default function OngoingGamesCard({game}){
                 backgroundColor='rgba(105, 139, 78, 1)'
                 style={styles.button}
                 textStyle={baseStyles.textShadowProp}
-                // onPress={()=>{
-                //   setVerified(false);
-                //   setReported(false);
-                //   setReport(false);
-                // }}
               /> ||
               <CustomButton
                 title="YOU LOST THIS GAME"
@@ -198,14 +208,8 @@ export default function OngoingGamesCard({game}){
                 backgroundColor='rgba(242, 36, 36, 1)'
                 style={styles.button}
                 textStyle={baseStyles.textShadowProp}
-                // onPress={()=>{
-                //   setVerified(false);
-                //   setReported(false);
-                //   setReport(false);
-                // }}
               />
-            }
-            
+            } 
           </View>
         }    
       </Card>
