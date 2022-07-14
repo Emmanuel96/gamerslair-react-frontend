@@ -17,6 +17,7 @@ import BottomNavBar from './components/BottomNavBar';
 import NewChallenges from './pages/NewChallenges/NewChallenges';
 import CreateChallenge from './pages/CreateChallenge/CreateChallenge';
 import OngoingGames from './pages/OngoingGames/OngoingGames';
+import Profile from './pages/Profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ export default function App() {
   return (
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
-        {authenticated && <Header price='30' dp={require('./asset/images/dp.png')}/>}
+        {authenticated && page != "profile" && <Header price='30' dp={require('./asset/images/dp.png')}/>}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="landing" component={Landing} />
           <Stack.Screen name="signin">
@@ -43,6 +44,9 @@ export default function App() {
           </Stack.Screen>
           <Stack.Screen name="create-challenge">  
             {(props) => <CreateChallenge {...props} setPage={setPage}/>}
+          </Stack.Screen>
+          <Stack.Screen name="profile">  
+            {(props) => <Profile {...props} setPage={setPage}/>}
           </Stack.Screen>
         </Stack.Navigator>
         {authenticated && <BottomNavBar page={page}/>}

@@ -6,6 +6,9 @@ export const baseStyles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'flex-start',
     },
+    contentContainer: {
+        paddingBottom: 200,
+    },
     customColor:{
         color:'rgba(71, 66, 66, 1)',
     },

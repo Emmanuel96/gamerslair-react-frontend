@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import AppLoading from 'expo-app-loading';
+import { useNavigation  } from '@react-navigation/native';
 import { 
     useFonts,
     Rosario_300Light,
@@ -13,11 +14,14 @@ import {
     Rosario_500Medium_Italic,
     Rosario_600SemiBold_Italic,
     Rosario_700Bold_Italic 
-  } from '@expo-google-fonts/rosario'
+} from '@expo-google-fonts/rosario'
+  
 
 import {baseStyles} from '../style'
 
 export default function Header(props){
+    const navigation = useNavigation();
+
     let [fontsLoaded] = useFonts({
         Rosario_700Bold,
       });
@@ -31,10 +35,14 @@ export default function Header(props){
             <Text style={styles.logo}>GamersLAIR</Text>
             <View style={styles.header_right}>
                 <Text style={styles.price}>${props.price}</Text>
-                <Image 
-                    source={props.dp}
-                    style={[baseStyles.dp]}
-                />
+                <TouchableOpacity
+                    onPress={() =>navigation.navigate('profile')}
+                >
+                    <Image 
+                        source={props.dp}
+                        style={[baseStyles.dp]}
+                    />
+                </TouchableOpacity>
             </View>
         </View>
     )
