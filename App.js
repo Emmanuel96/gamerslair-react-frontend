@@ -18,6 +18,7 @@ import NewChallenges from './pages/NewChallenges/NewChallenges';
 import CreateChallenge from './pages/CreateChallenge/CreateChallenge';
 import OngoingGames from './pages/OngoingGames/OngoingGames';
 import Profile from './pages/Profile/Profile';
+import Payment from './pages/Payment/Payment';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,9 @@ export default function App() {
           </Stack.Screen>
           <Stack.Screen name="profile">  
             {(props) => <Profile {...props} setPage={setPage}/>}
+          </Stack.Screen>
+          <Stack.Screen name="payment">  
+            {(props) => <Payment {...props} setPage={setPage}/>}
           </Stack.Screen>
         </Stack.Navigator>
         {authenticated && <BottomNavBar page={page}/>}

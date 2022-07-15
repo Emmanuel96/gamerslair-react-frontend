@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {SafeAreaView,ScrollView, View, Text} from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation  } from '@react-navigation/native';
 
 import styles from './styles'
 import { baseStyles } from '../../style';
@@ -9,6 +10,8 @@ import Hero from './Hero';
 import CustomButton from '../../components/CustomButton';
 
 export default function Profile(props) {
+    const navigation = useNavigation();
+
     useFocusEffect(()=>{
         props.setPage('profile')
     })
@@ -48,6 +51,7 @@ export default function Profile(props) {
                             image_after_style={styles.button_icon}
                             color="#fff"
                             style={styles.fund_button}
+                            onPress={() =>navigation.navigate('payment')}
                         />
                     </View>
                 </View>
