@@ -32,14 +32,35 @@ export default StyleSheet.create({
     input: {
         backgroundColor: 'white',
         borderRadius: 5,
-        height: 50,
+        height: 45,
         paddingLeft: 15,
+        fontWeight:'bold',
+    },
+    input_multiple_top:{
+        borderBottomLeftRadius:0,
+        borderBottomRightRadius:0,
+    },
+    input_multiple_bottom:{
+        borderTopLeftRadius:0,
+        borderTopRightRadius:0,
+    },
+    email_input:{
+        color:'#787879',
+        fontWeight:'normal',
+
     },
     input_half_length_container:{
         flexDirection:'row',
     },
-    input_half_length:{
-        width:'50%'
+    input_half_length_left:{
+        width:'50%',
+        borderTopRightRadius: 0,
+        borderBottomRightRadius:0,
+    },
+    input_half_length_rigth:{
+        width:'50%',
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius:0,
     },
     proceed_button:{
         alignSelf: 'center',
