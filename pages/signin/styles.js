@@ -14,7 +14,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 200
+    marginTop: 50
   },
 
   clickHereText: {
@@ -58,7 +58,7 @@ export default StyleSheet.create({
 
   textLogo: {
     textAlign: 'center',
-    marginTop: 100,
+    marginTop: 90,
     fontSize: 35,
     fontWeight: 'bold',
     color: '#E5B300'
@@ -69,7 +69,7 @@ export default StyleSheet.create({
     color: '#514C4C',
     fontSize: 16,
     fontWeight: '700',
-    marginTop: 70
+    marginTop: 45
   },
 
   usernameInput: {

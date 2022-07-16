@@ -17,7 +17,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 70
+    marginTop: 40
   },
 
   signUpContainer: {
@@ -42,7 +42,7 @@ export default StyleSheet.create({
 
   textLogo: {
     textAlign: 'center',
-    marginTop: 100,
+    marginTop: 50,
     fontSize: 35,
     fontWeight: 'bold',
     color: '#E5B300'
@@ -53,7 +53,7 @@ export default StyleSheet.create({
     color: '#514C4C',
     fontSize: 16,
     fontWeight: '700',
-    marginTop: 50
+    marginTop: 25
   },
 
   usernameInput: {
