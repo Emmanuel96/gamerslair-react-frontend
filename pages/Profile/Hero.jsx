@@ -47,10 +47,9 @@ export default function Hero(props){
                             source={require('../../asset/images/dp.png')}
                             style={[baseStyles.dp, styles.user_photo]}
                         />
-                        <View>
-                            <Text style={styles.profile_name}>ROY HIBISCUS</Text>
+                        <View style={{flex:1}}>
+                            <Text style={styles.profile_name}>@royhibiscus</Text>
                             <Text style={styles.profile_email}>royhibiscus@email.com</Text>
-                            <Text style={styles.profile_email}>@royhibiscus</Text>
                         </View>
                 </View>
             </View> 
@@ -96,14 +95,15 @@ const styles = StyleSheet.create({
     profile_name:{
         color:'#fff',
         fontWeight: '800',
-        fontSize: 22,
+        fontSize: 24,
         paddingBottom: 5
     },
     profile_email:{
         color:'#fff',
         fontWeight: '600',
         fontSize: 16,
-        paddingBottom: 5
+        paddingBottom: 5,
+        paddingLeft:2,
     }, 
     account_ballance_tag:{
         backgroundColor: "#F2F1F6",
