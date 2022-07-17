@@ -36,7 +36,7 @@ export default function NewChallenges(props) {
           console.log(err)
       }
     })
-  }, [props.authenticated])
+  }, [auth])
 
   useEffect(()=>{
     const challengeListener = (response)=>{

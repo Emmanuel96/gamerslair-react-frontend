@@ -38,7 +38,7 @@ export default function App() {
     <UserContextProvider>
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
-        {auth && page != "profile" && <Header price='30' dp={require('./asset/images/dp.png')}/>}
+        {auth && page != "profile" && <Header dp={require('./asset/images/dp.png')}/>}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="landing" component={Landing} />
           <Stack.Screen name="signin">

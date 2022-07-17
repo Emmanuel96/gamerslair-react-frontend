@@ -58,7 +58,7 @@ export default function Hero(props){
             </View> 
             <View style={styles.account_ballance_tag}>
                 <View style={styles.account_ballance_wrapper}>
-                    <Text style={styles.account_ballance}>$30</Text>
+                    <Text style={styles.account_ballance}>${user.account_bal}</Text>
                 </View>
             </View>
         </View>

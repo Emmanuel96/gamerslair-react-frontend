@@ -19,8 +19,11 @@ import {
 
 import {baseStyles} from '../style'
 
+import { useUser} from "../contexts/UserContext";
+
 export default function Header(props){
     const navigation = useNavigation();
+    const user = useUser()
 
     let [fontsLoaded] = useFonts({
         Rosario_700Bold,
@@ -34,7 +37,7 @@ export default function Header(props){
         <View style={styles.header}>
             <Text style={styles.logo}>GamersLAIR</Text>
             <View style={styles.header_right}>
-                <Text style={styles.price}>${props.price}</Text>
+                <Text style={styles.price}>${user.account_bal}</Text>
                 <TouchableOpacity
                     onPress={() =>navigation.navigate('profile')}
                 >
