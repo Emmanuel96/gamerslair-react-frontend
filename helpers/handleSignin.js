@@ -13,7 +13,10 @@ export default async function handleSignin(email, password){
       logger.info(res)
       try {
         await AsyncStorage.setItem('@accessToken', res.accessToken)          
+        await AsyncStorage.setItem('@refreshToken', res.accessToken)          
         await AsyncStorage.setItem('@user_id', res.user.id)
+        await AsyncStorage.setItem('@user_email', res.user.email)
+        await AsyncStorage.setItem('@user_username', res.user.username)
         return true
       } catch (e) {
         console.log('unable to store access token')

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect, useContext} from "react"
 import { useNavigation } from '@react-navigation/native'
 import BouncyCheckbox from "react-native-bouncy-checkbox"
 import handleSignin from "../../helpers/handleSignin"
@@ -9,21 +9,25 @@ import {
   View,
   TextInput
 } from 'react-native'
+import {useAuth, useSetAuth } from '../../contexts/AuthContext';
 
-export default function SignIn({setAuthenticated, authenticated}){
+export default function SignIn(){
   const navigation = useNavigation()
+  const auth = useAuth()
+  const setAuth = useSetAuth()
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const signin = async () => {
-    setAuthenticated(await handleSignin(email, password))
+    setAuth(await handleSignin(email, password))
   }
   
   useEffect(()=>{
-    if(authenticated){
+    if(auth){
       navigation.navigate('new-challenges', { name: 'new-challenges' })
     }
-  },[authenticated])
+  },[auth])
 
   return(
     <View style={styles.body}>

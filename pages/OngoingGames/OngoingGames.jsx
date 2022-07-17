@@ -11,8 +11,12 @@ import PageTitleBar from '../../components/PageTitleBar'
 import OngoingGamesCard from './OngoingGamesCard'
 import handleFetchGames from '../../helpers/games/handleFetchGames';
 
+import {useAuth, useSetAuth } from '../../contexts/AuthContext';
 
 export default function OngoingGames(props) {
+  const auth = useAuth()
+  const setAuth = useSetAuth()
+
   const [games, setGames] = useState([]);
 
   useFocusEffect(()=>{
@@ -24,7 +28,7 @@ export default function OngoingGames(props) {
       setGames(response.response.data)
     }).catch(err =>{
         if(err == 'null_access'){
-            props.setAuthenticated(false)
+            setAuth(false)
             navigation.navigate('signin', { name: 'signin' })
         }else{
             alert(`Unable to fetch games \n ${err}`)

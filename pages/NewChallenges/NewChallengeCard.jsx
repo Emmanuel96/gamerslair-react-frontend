@@ -8,7 +8,12 @@ import Card from '../../components/Card'
 import CustomButton from '../../components/CustomButton';
 import handleAcceptReject from '../../helpers/challenges/handleAcceptReject';
 
+import {useAuth, useSetAuth } from '../../contexts/AuthContext';
+
 export default function NewChallengeCard(props){
+  const auth = useAuth()
+  const setAuth = useSetAuth()
+  
   const [view, setView] = useState(false);
   const [challenge_state, setChallengeState] = useState(props.challenge.state)
 
@@ -19,7 +24,7 @@ export default function NewChallengeCard(props){
       setChallengeState(response.response.data.updatedChallenge.state)
     }).catch(err =>{
         if(err == 'null_access'){
-            props.setAuthenticated(false)
+            setAuth(false)
             navigation.navigate('signin', { name: 'signin' })
         }else{
             alert(err)
@@ -34,7 +39,7 @@ export default function NewChallengeCard(props){
       setChallengeState(response.response.data.updatedChallenge.state)
     }).catch(err =>{
         if(err == 'null_access'){
-            props.setAuthenticated(false)
+            setAuth(false)
             navigation.navigate('signin', { name: 'signin' })
         }else{
             alert(err)

@@ -11,7 +11,12 @@ import { baseStyles } from '../../style';
 import Card from '../../components/Card';
 import CustomButton from '../../components/CustomButton';
 
+import {useAuth, useSetAuth } from '../../contexts/AuthContext';
+
 export default function OngoingGamesCard({game}){
+    const auth = useAuth()
+    const setAuth = useSetAuth()
+
     const [thisGame, setThisGame] = useState(game)
     const [report, setReport] = useState(false);
     const [reported, setReported] = useState(false);
@@ -24,7 +29,7 @@ export default function OngoingGamesCard({game}){
       try {
         user_id = await AsyncStorage.getItem('@user_id')
           if(user_id == null) {
-            props.setAuthenticated(false)
+            setAuth(false)
             navigation.navigate('signin', { name: 'signin' })
           }      
           setUserId(user_id)  
@@ -85,7 +90,7 @@ export default function OngoingGamesCard({game}){
         setReported(true)
       }).catch(err =>{
           if(err == 'null_access'){
-              props.setAuthenticated(false)
+              setAuth(false)
               navigation.navigate('signin', { name: 'signin' })
           }else{
               alert(`Report game failed \n ${err}`)
@@ -106,7 +111,7 @@ export default function OngoingGamesCard({game}){
         }
       }).catch(err =>{
           if(err == 'null_access'){
-              props.setAuthenticated(false)
+              setAuth(false)
               navigation.navigate('signin', { name: 'signin' })
           }else{
               alert(`Report game failed \n ${err}`)

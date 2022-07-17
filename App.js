@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, SafeAreaProvider} from 'react-native';
+import React, {useState, createContext} from 'react';
+import { SafeAreaView} from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AppLoading from 'expo-app-loading';
 
 import { baseStyles } from './style';
 
@@ -19,26 +17,34 @@ import CreateChallenge from './pages/CreateChallenge/CreateChallenge';
 import OngoingGames from './pages/OngoingGames/OngoingGames';
 import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
+import { AuthContext, SetAuthContext} from './contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [auth, updateAuth] = useState(false)
   const [page, setPage] = useState('new_challenges');
   const [authenticated, setAuthenticated] = useState(false);
+
+  function setAuth(new_auth){
+    updateAuth(new_auth)
+  }
   
   return (
+    <AuthContext.Provider value={auth}>
+    <SetAuthContext.Provider value={setAuth}>
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
-        {authenticated && page != "profile" && <Header price='30' dp={require('./asset/images/dp.png')}/>}
+        {auth && page != "profile" && <Header price='30' dp={require('./asset/images/dp.png')}/>}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="landing" component={Landing} />
           <Stack.Screen name="signin">
-          {(props) => <SignIn {...props} setAuthenticated={setAuthenticated} authenticated={authenticated}/>}
+          {(props) => <SignIn {...props}/>}
           </Stack.Screen>
           <Stack.Screen name="signup" component={SignUp} />
           <Stack.Screen name="reset-password" component={ResetPassword} />
           <Stack.Screen name="new-challenges">
-            {(props) => <NewChallenges {...props} setAuthenticated={setAuthenticated} authenticated={authenticated} setPage={setPage} page={page}/>}
+            {(props) => <NewChallenges {...props} setPage={setPage} page={page}/>}
           </Stack.Screen>
           <Stack.Screen name="ongoing-games">  
             {(props) => <OngoingGames {...props} setPage={setPage}/>}
@@ -56,5 +62,7 @@ export default function App() {
         {authenticated && <BottomNavBar page={page}/>}
       </NavigationContainer>
     </SafeAreaView>
+    </SetAuthContext.Provider>
+    </AuthContext.Provider>
   );
 }

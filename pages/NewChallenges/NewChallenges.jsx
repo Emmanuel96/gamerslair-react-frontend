@@ -11,7 +11,12 @@ import NewChallengeCard from './NewChallengeCard';
 import PageTitleBar from '../../components/PageTitleBar'
 import handleFetchChallenges from '../../helpers/challenges/handleFetchChallenges';
 
+import {useAuth, useSetAuth } from '../../contexts/AuthContext';
+
 export default function NewChallenges(props) {
+  const auth = useAuth()
+  const setAuth = useSetAuth()
+
   const [challenges, setChallenges] = useState([]);
 
   useFocusEffect(()=>{
@@ -24,7 +29,7 @@ export default function NewChallenges(props) {
     }).catch(err =>{
       setChallenges([])
       if(err == 'null_access'){
-          props.setAuthenticated(false)
+          setAuth(false)
           navigation.navigate('signin', { name: 'signin' })
       }else{
           alert(`Unable to fetch challenges \n ${err}`)
