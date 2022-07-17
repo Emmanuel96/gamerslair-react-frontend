@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react"
+import React, { useState, useEffect} from "react"
 import { useNavigation } from '@react-navigation/native'
 import BouncyCheckbox from "react-native-bouncy-checkbox"
 import handleSignin from "../../helpers/handleSignin"
@@ -7,20 +7,31 @@ import {
   TouchableOpacity,
   Text,
   View,
-  TextInput
+  TextInput,
 } from 'react-native'
 import {useAuth, useSetAuth } from '../../contexts/AuthContext';
+import { useUser, useSetUser } from "../../contexts/UserContext";
 
 export default function SignIn(){
   const navigation = useNavigation()
   const auth = useAuth()
   const setAuth = useSetAuth()
-  
+  const user = useUser()
+  const setUser = useSetUser()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const signin = async () => {
-    setAuth(await handleSignin(email, password))
+    handleSignin(email, password).then((data)=>{
+      if(data){
+        setUser(data.user)
+        setAuth(data.success)
+      }
+    }).catch(err =>{
+      alert(`Unable to login \n ${err}`)
+      console.log(err)
+    })
   }
   
   useEffect(()=>{

@@ -16,11 +16,14 @@ import {
     Rosario_700Bold_Italic 
 } from '@expo-google-fonts/rosario'
   
-
 import {baseStyles} from '../../style'
+
+import { useUser} from "../../contexts/UserContext";
 
 export default function Hero(props){
     const navigation = useNavigation();
+
+    const user = useUser()
 
     let [fontsLoaded] = useFonts({
         Rosario_700Bold,
@@ -48,8 +51,8 @@ export default function Hero(props){
                             style={[baseStyles.dp, styles.user_photo]}
                         />
                         <View style={{flex:1}}>
-                            <Text style={styles.profile_name}>@royhibiscus</Text>
-                            <Text style={styles.profile_email}>royhibiscus@email.com</Text>
+                            <Text style={styles.profile_name}>@{user.username}</Text>
+                            <Text style={styles.profile_email}>{user.email}</Text>
                         </View>
                 </View>
             </View> 

@@ -17,7 +17,9 @@ import CreateChallenge from './pages/CreateChallenge/CreateChallenge';
 import OngoingGames from './pages/OngoingGames/OngoingGames';
 import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
+
 import { AuthContext, SetAuthContext} from './contexts/AuthContext';
+import { UserContextProvider } from './contexts/UserContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={auth}>
     <SetAuthContext.Provider value={setAuth}>
+    <UserContextProvider>
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
         {auth && page != "profile" && <Header price='30' dp={require('./asset/images/dp.png')}/>}
@@ -59,9 +62,10 @@ export default function App() {
             {(props) => <Payment {...props} setPage={setPage}/>}
           </Stack.Screen>
         </Stack.Navigator>
-        {authenticated && <BottomNavBar page={page}/>}
+        {auth && <BottomNavBar page={page}/>}
       </NavigationContainer>
     </SafeAreaView>
+    </UserContextProvider>
     </SetAuthContext.Provider>
     </AuthContext.Provider>
   );
