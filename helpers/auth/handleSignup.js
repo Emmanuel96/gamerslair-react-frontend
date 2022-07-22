@@ -1,5 +1,5 @@
-import auth from '../services/auth'
-import logger from '../utils/logger'
+import auth from '../../services/auth'
+import logger from '../../utils/logger'
 
 export default function handleSignup(username, email, password) {
   let newUser = {

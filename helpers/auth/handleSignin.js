@@ -1,5 +1,5 @@
-import auth from '../services/auth'
-import logger from '../utils/logger'
+import auth from '../../services/auth'
+import logger from '../../utils/logger'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default async function handleSignin(email, password){

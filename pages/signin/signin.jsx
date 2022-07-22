@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react"
 import { useNavigation } from '@react-navigation/native'
 import BouncyCheckbox from "react-native-bouncy-checkbox"
-import handleSignin from "../../helpers/handleSignin"
+import handleSignin from "../../helpers/auth/handleSignin"
 import styles from './styles'
 import {
   TouchableOpacity,

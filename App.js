@@ -20,6 +20,7 @@ import Payment from './pages/Payment/Payment';
 
 import { AuthContext, SetAuthContext} from './contexts/AuthContext';
 import { UserContextProvider } from './contexts/UserContext';
+import { StripeProvider } from '@stripe/stripe-react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,11 @@ export default function App() {
     <AuthContext.Provider value={auth}>
     <SetAuthContext.Provider value={setAuth}>
     <UserContextProvider>
+    <StripeProvider
+      publishableKey="pk_test_51LIAmLFozueojb1JUE6c6euwjP2ClmWm1g1dxyD9cOOpvBCgMkLgClLfXH8xvEeplqPFcYh6granpyBVYD0puaCc00HeNEtsOh"
+      // urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
+      // merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
+    >  
     <SafeAreaView style={baseStyles.container}>
       <NavigationContainer>
         {auth && page != "profile" && <Header dp={require('./asset/images/dp.png')}/>}
@@ -58,13 +64,14 @@ export default function App() {
           <Stack.Screen name="profile">  
             {(props) => <Profile {...props} setPage={setPage}/>}
           </Stack.Screen>
-          <Stack.Screen name="payment">  
+          <Stack.Screen name="payment">
             {(props) => <Payment {...props} setPage={setPage}/>}
           </Stack.Screen>
         </Stack.Navigator>
         {auth && <BottomNavBar page={page}/>}
       </NavigationContainer>
     </SafeAreaView>
+    </StripeProvider>
     </UserContextProvider>
     </SetAuthContext.Provider>
     </AuthContext.Provider>
