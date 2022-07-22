@@ -6,7 +6,7 @@ import axios from 'axios';
 exports.createPaymentIntent = async function (amount){
     const accessToken = await fetchAccessToken()
 
-    const request =  await axios.post(`${HOST}/api/payment/create_payment_intent`,
+    return await axios.post(`${HOST}/api/payment/create_payment_intent`,
         {amount},
         {
             headers: {
@@ -17,12 +17,9 @@ exports.createPaymentIntent = async function (amount){
     ).then(response =>{
         return response.data
     }).catch(err=>{
-        alert(`Unable to create payment intent \n ${err}`)
-        throw err
-        console.log(err)
+        alert(`Unable to create payment intent \n ${err.response.data}`)
+        console.log(err.response)
     })
-    
-    return request
 }
 
 exports.updateUserAccount = async (amount) =>{
@@ -39,8 +36,7 @@ exports.updateUserAccount = async (amount) =>{
     ).then(response =>{
         return response.data.account_bal
     }).catch(err=>{
-        alert(`Account update failed \n ${err}`)
-        throw err
+        alert(`Account update failed \n ${err.response.data}`)
         console.log(err)
     })
 }
